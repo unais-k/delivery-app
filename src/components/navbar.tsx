@@ -1,9 +1,8 @@
 import React from "react";
-import LoginButton from "./LoginButton";
 
 const Navbar = () => {
     return (
-        <div className="justify-center items-center self-stretch bg-white flex w-full flex-col px-16 py-5 max-md:max-w-full max-md:px-5">
+        <div className="justify-center items-center h-fit bg-white flex w-full flex-col px-16 py-5 max-md:max-w-full max-md:px-5">
             <div className="justify-between flex w-full max-w-[1200px] gap-5 items-start max-md:max-w-full max-md:flex-wrap max-md:justify-center">
                 <div className="items-stretch flex gap-3">
                     <div className="text-orange-500 text-xl leading-9 self-center grow whitespace-nowrap my-auto">
@@ -31,8 +30,9 @@ const Navbar = () => {
                             Search
                         </div>
                     </div>
-
-                    <LoginButton />
+                    <div className="text-white text-center text-base font-semibold leading-4 whitespace-nowrap items-stretch bg-zinc-900 self-stretch grow justify-center px-6 py-3.5 rounded-xl max-md:px-5">
+                        Log in
+                    </div>
                 </div>
             </div>
         </div>
