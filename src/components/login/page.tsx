@@ -4,8 +4,8 @@ import { FaGoogle } from "react-icons/fa";
 
 const page = () => {
     return (
-        <div className="justify-center items-center bg-zinc-900 bg-opacity-80 flex w-full flex-col max-md:max-w-full">
-            <div className="items-stretch border bg-white flex w-[480px] max-w-full flex-col mt-44 mb-32 px-8 py-10 rounded-xl border-solid border-zinc-300 max-md:my-10 max-md:px-5">
+        <div className="justify-center items-center bg-zinc-900 bg-opacity-80 flex w-full flex-col h-screen max-md:max-w-full">
+            <div className="items-stretch border bg-white flex w-[480px] max-w-full flex-col px-8 py-10 rounded-xl border-solid border-zinc-300">
                 <div className="items-stretch flex justify-between gap-2">
                     <div className="text-zinc-900 text-4xl font-extrabold leading-[50px] tracking-tighter grow shrink basis-auto">
                         Log in
@@ -57,7 +57,7 @@ const page = () => {
                 </button>
                 <div className="justify-center items-center border bg-white flex flex-col mt-5 px-16 py-5 rounded-xl border-solid border-neutral-500 max-md:px-5">
                     <div className="flex gap-2.5 items-start">
-                        <FaGoogle />
+                        <FaGoogle size="30" />
                         <div className="text-zinc-900 text-lg font-bold leading-5 grow whitespace-nowrap mt-1">
                             Log in with Google
                         </div>
