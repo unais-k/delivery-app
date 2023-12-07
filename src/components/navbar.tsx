@@ -1,6 +1,5 @@
 import React from "react";
-import LoginButton from "./LoginButton"
-
+import LoginButton from "./LoginButton";
 
 const Navbar = () => {
     return (
@@ -33,9 +32,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    
-<LoginButton/>
-                   
+                    <LoginButton />
                 </div>
             </div>
         </div>
