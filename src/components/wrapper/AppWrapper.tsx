@@ -7,7 +7,7 @@ import Navbar from "../Navbar";
 export default function AppWrapper({ children }: { children: React.ReactNode }) {
     const router = useRouter();
 
-    const isNavbarAllowed = router.pathname != "/auth/signin";
+    const isNavbarAllowed = router.pathname != "/auth";
 
     return (
         <div
