@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
     return (
-        <div className="justify-center items-center self-stretch bg-white flex w-full flex-col px-16 py-5 max-md:max-w-full max-md:px-5">
+        <div className="justify-center items-center h-fit bg-white flex w-full flex-col px-16 py-5 max-md:max-w-full max-md:px-5">
             <div className="justify-between flex w-full max-w-[1200px] gap-5 items-start max-md:max-w-full max-md:flex-wrap max-md:justify-center">
                 <div className="items-stretch flex gap-3">
                     <div className="text-orange-500 text-xl leading-9 self-center grow whitespace-nowrap my-auto">
