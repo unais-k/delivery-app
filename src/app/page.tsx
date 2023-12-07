@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
     return (
         <main className="">
-            <div className="items-center bg-white flex flex-col">
+            <div className="">
                 <Navbar />
                 <div className="self-center text-zinc-900 text-center text-6xl font-extrabold leading-[76px] tracking-tighter w-[1200px] max-w-[1200px] mt-24 max-md:max-w-full max-md:text-4xl max-md:leading-[62px] max-md:mt-10">
                     Reimagining real estate to <br />
