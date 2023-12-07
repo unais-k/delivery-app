@@ -1,4 +1,6 @@
 import React from "react";
+import LoginButton from "./LoginButton"
+
 
 const Navbar = () => {
     return (
@@ -30,9 +32,10 @@ const Navbar = () => {
                             Search
                         </div>
                     </div>
-                    <div className="text-white text-center text-base font-semibold leading-4 whitespace-nowrap items-stretch bg-zinc-900 self-stretch grow justify-center px-6 py-3.5 rounded-xl max-md:px-5">
-                        Log in
-                    </div>
+
+                    
+<LoginButton/>
+                   
                 </div>
             </div>
         </div>
