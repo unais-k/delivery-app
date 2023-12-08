@@ -62,7 +62,7 @@ const CustomerService = () => {
             </div>
             <div className="bg-[#FFF7F1] flex flex-col font-poppins items-center justify-center sm:px-20 px-[80px] py-[50px] w-full">
                 <div className="flex md:flex-col flex-row md:gap-10 gap-[100px] items-start justify-start mx-auto w-full">
-                    <div className="md:flex-1 sm:flex-col flex-row md:gap-10  grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full">
+                    <div className="md:flex-1 sm:flex-col flex-row gap-10  grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full">
                         {CustomerTrustConstants.map((item, i) => {
                             return (
                                 <div key={item.id} className="flex flex-col gap-[18px] items-start justify-start w-full">

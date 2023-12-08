@@ -7,7 +7,7 @@ import { Text } from "@/components/modules/ui/Text";
 const LandingSection = () => {
     return (
         <>
-            <div className="flex flex-row md:gap-10 gap-[100px] items-center justify-start w-full pb-[30px] bg-[#FFF7F1] pt-[90px] pl-16">
+            <div className="flex flex-row md:gap-10 gap-[100px] items-center justify-start w-full pb-[30px] bg-[#FFF7F1] pt-[100px] pl-16">
                 <div className="flex flex-1 flex-col gap-10 items-start justify-start w-full">
                     <div className="flex flex-col gap-4 items-start justify-start w-full">
                         <Text
