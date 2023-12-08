@@ -6,8 +6,7 @@ import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
-=======
->>>>>>> cff0a9e8e0c71b10a6adf87787b5fb974fdadb4e
+
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
     return (
