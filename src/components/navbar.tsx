@@ -1,13 +1,17 @@
 import React from "react";
+<<<<<<< HEAD
 import { Text } from "./modules/ui/Text";
 import { Img } from "./modules/ui/Image";
 import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
+=======
+>>>>>>> cff0a9e8e0c71b10a6adf87787b5fb974fdadb4e
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
     return (
+<<<<<<< HEAD
         <>
             <header
                 className={`${props.className}flex justify-center bg-white z-50 fixed shadow-md h-[80px] items-center w-full `}
@@ -60,6 +64,38 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         <Button className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white">
                             Log in
                         </Button>
+=======
+        <div className="justify-center items-center h-fit bg-white flex w-full flex-col px-16 py-5 max-md:max-w-full max-md:px-5">
+            <div className="justify-between flex w-full max-w-[1200px] gap-5 items-start max-md:max-w-full max-md:flex-wrap max-md:justify-center">
+                <div className="items-stretch flex gap-3">
+                    <div className="text-orange-500 text-xl leading-9 self-center grow whitespace-nowrap my-auto">
+                        Relasto
+                    </div>
+                </div>
+                <div className="justify-between items-stretch self-center flex gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
+                    <div className="items-stretch flex justify-between gap-1.5 pr-2.5">
+                        <div className="text-zinc-900 text-base font-semibold leading-4 grow whitespace-nowrap">Home</div>
+                    </div>
+                    <div className="items-stretch flex justify-between gap-1.5 px-0.5">
+                        <div className="text-zinc-900 text-base font-semibold leading-4 grow whitespace-nowrap">
+                            Listing
+                        </div>
+                    </div>
+                    <div className="items-stretch flex justify-between gap-1.5">
+                        <div className="text-zinc-900 text-base font-semibold leading-4 grow whitespace-nowrap">Agents</div>
+                    </div>
+                    <div className="text-zinc-900 text-center text-base font-semibold leading-4">Property </div>
+                    <div className="text-zinc-900 text-base font-semibold leading-4 whitespace-nowrap">Blog</div>
+                </div>
+                <div className="items-center self-stretch flex justify-between gap-5">
+                    <div className="items-stretch flex gap-2 my-auto">
+                        <div className="text-zinc-900 text-lg font-bold leading-5 self-center grow whitespace-nowrap my-auto">
+                            Search
+                        </div>
+                    </div>
+                    <div className="text-white text-center text-base font-semibold leading-4 whitespace-nowrap items-stretch bg-zinc-900 self-stretch grow justify-center px-6 py-3.5 rounded-xl max-md:px-5">
+                        Log in
+>>>>>>> cff0a9e8e0c71b10a6adf87787b5fb974fdadb4e
                     </div>
                 </div>
             </header>
