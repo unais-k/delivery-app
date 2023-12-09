@@ -7,7 +7,7 @@ import { Text } from "@/components/modules/ui/Text";
 const LandingSection = () => {
     return (
         <>
-            <div className="flex flex-row md:gap-10 gap-[100px] items-center justify-start w-full pb-[30px] bg-[#FFF7F1] pt-[100px] pl-16">
+            <div className="flex flex-col md:gap-10 gap-[100px] items-center justify-start md:flex-row w-full pb-[30px] bg-[#FFF7F1] pt-[100px] pl-16">
                 <div className="flex flex-1 flex-col gap-10 items-start justify-start w-full">
                     <div className="flex flex-col gap-4 items-start justify-start w-full">
                         <Text
@@ -22,20 +22,20 @@ const LandingSection = () => {
                             We helps businesses customize, automate and scale up their ad production and delivery.
                         </Text>
                     </div>
-                    <div className="bg-white flex flex-col items-start justify-start p-8 sm:px-5 rounded-[16px] w-fit">
-                        <div className="flex flex-col gap-[38px] items-center justify-start w-fit">
-                            <div className="flex flex-col gap-6 items-start justify-start">
-                                <div className="flex flex-col gap-5 items-start justify-start">
+                    <div className="bg-white flex flex-col items-start justify-start p-8 sm:px-5 rounded-[16px] w-[80%]">
+                        <div className="flex flex-col gap-[38px] items-center justify-start w-full">
+                            <div className="flex flex-col gap-6 items-start justify-start w-full">
+                                <div className="flex flex-col gap-5 items-start justify-start w-full">
                                     <Input
                                         name=""
                                         placeholder="City/Street"
                                         className="font-semibold p-0  placeholder:text-gray-600 text-gray-600 text-left text-lg w-full"
-                                        wrapClassName="bg-white-A700 border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
+                                        wrapClassName="border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
                                         suffix={
                                             <Img
                                                 width={500}
                                                 height={500}
-                                                className="mt-auto mb-[5px] h-5"
+                                                className="mt-auto mb-[5px] h-5 w-5"
                                                 src="images/img_location.svg"
                                                 alt="location"
                                             />
@@ -45,12 +45,12 @@ const LandingSection = () => {
                                         name=""
                                         placeholder="Property Type"
                                         className="font-semibold p-0 placeholder:text-gray-600 text-gray-600 text-left text-lg w-full"
-                                        wrapClassName="bg-white-A700 border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
+                                        wrapClassName="border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
                                         suffix={
                                             <Img
                                                 width={500}
                                                 height={500}
-                                                className="mt-auto mb-[5px] h-5"
+                                                className="mt-auto mb-[5px] h-5 w-5"
                                                 src="images/img_sort.svg"
                                                 alt="sort"
                                             />
@@ -60,12 +60,12 @@ const LandingSection = () => {
                                         name=""
                                         placeholder="Price Range"
                                         className="font-semibold p-0 placeholder:text-gray-600 text-gray-600 text-left text-lg w-full"
-                                        wrapClassName="bg-white-A700 border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
+                                        wrapClassName="border border-solid flex pb-3.5 pt-5 px-4 rounded-[10px] w-full"
                                         suffix={
                                             <Img
                                                 width={500}
                                                 height={500}
-                                                className="mt-auto mb-[5px] h-5"
+                                                className="mt-auto mb-[5px] h-5 w-5"
                                                 src="images/img_sort.svg"
                                                 alt="sort"
                                             />
@@ -79,11 +79,11 @@ const LandingSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex md:flex-1 flex-col items-center justify-start w-[47%] md:w-full">
+                <div className="flex md:flex-1 flex-col items-center justify-start md:w-full">
                     <Img
                         width={500}
                         height={500}
-                        className="h-fit md:h-auto object-cover w-full"
+                        className="h-[500px] md:h-auto object-cover w-full"
                         src="/House.png"
                         alt="image"
                     />

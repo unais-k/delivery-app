@@ -38,7 +38,7 @@ const Login: React.FC = () => {
                         onClick={handleRegister}
                         className="text-neutral-500 text-center text-xl font-semibold leading-7 tracking-tight whitespace-nowrap"
                     >
-                        Don’t have an account ?
+                        {!isRegister ? "Don’t have an account ?" : "Return to Log in"}
                     </div>
                 </div>
             </div>
