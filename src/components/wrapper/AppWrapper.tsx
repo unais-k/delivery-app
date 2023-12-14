@@ -9,6 +9,7 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
     const router = useRouter();
 
     const isNavbarAllowed = router.pathname != "/auth";
+    const isOTP = router.pathname != "/auth/otp";
 
     return (
         <div
@@ -17,9 +18,9 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
             }}
         >
             <ToastContainer />
-            {isNavbarAllowed && <Navbar />}
+            {isNavbarAllowed && isOTP && <Navbar />}
             <main>{children} </main>
-            {isNavbarAllowed && <Footer />}
+            {isNavbarAllowed && isOTP && <Footer />}
 
             {/* {isNavbarAllowed && <Footer />} */}
         </div>

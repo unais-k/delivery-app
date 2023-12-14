@@ -6,28 +6,52 @@ import "react-phone-input-2/lib/bootstrap.css";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 import { auth } from "@/firebase/firebaseConfig";
+import { useRouter } from "next/router";
 
-const SignUpForm = () => {
-    const [phone, setPhone] = useState("");
-    const [password, setPassword] = useState("");
+type SignUpProps = {
+    fullName: string;
+    setFullName: React.Dispatch<React.SetStateAction<string>>;
+    phone: string;
+    setPhone: React.Dispatch<React.SetStateAction<string>>;
+    password: string;
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
+    onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};
 
-    const handleFormData = async () => {};
+const SignUpForm: React.FC<SignUpProps> = ({
+    phone,
+    setPassword,
+    password,
+    setPhone,
+    fullName,
+    setFullName,
+    onFormSubmit,
+}) => {
+    const router = useRouter();
 
-    const getOtp = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    // const getOtp = async (e: FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
 
-        try {
-            const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha", {});
+    //     try {
+    //         const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha", {});
 
-            const confirmation = await signInWithPhoneNumber(auth, `+${phone}`, recaptchaVerifier);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    //         const confirmation = await signInWithPhoneNumber(auth, `+${phone}`, recaptchaVerifier)
+    //             .then((confirm) => {
+    //                 router.push("/auth/otp");
+    //                 setVerification(confirm);
+    //                 console.log(confirm);
+    //             })
+    //             .catch((error: any) => {
+    //                 console.log(error.message);
+    //             });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     return (
         <>
-            <form onSubmit={getOtp}>
+            <form onSubmit={onFormSubmit}>
                 <div className="items-stretch bg-white flex flex-col justify-center px-4 mt-6">
                     <div className="items-center border flex justify-between gap-3.5 px-4 py-3.5  rounded-xl border-solid border-zinc-300">
                         <Image
@@ -39,7 +63,9 @@ const SignUpForm = () => {
                         <input
                             type="text"
                             placeholder="full name"
-                            className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            className="text-neutral-500 text-lg outline-none bg-transparent border-transparent focus:outline-none font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
                     </div>
                 </div>
@@ -51,13 +77,7 @@ const SignUpForm = () => {
                             value={phone}
                             onChange={(e) => setPhone(e)}
                         />
-                        {/* <input
-                        type="text"
-                        placeholder="phone"
-                        className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
-                    /> */}
                     </div>
-                    <div id="recaptcha"></div>
                 </div>
                 <div className="items-stretch bg-white flex flex-col justify-center px-4  mt-3">
                     <div className="items-center border flex justify-between gap-3.5 px-4 py-3.5  rounded-md border-solid border-zinc-300">
@@ -70,11 +90,14 @@ const SignUpForm = () => {
                         <input
                             type="password"
                             placeholder="password"
-                            className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="text-neutral-500 text-lg outline-none bg-transparent border-transparent focus:outline-none font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
                     </div>
                 </div>
 
+                <div className="mt-3 ms-4" id="recaptcha"></div>
                 <button
                     type="submit"
                     className="text-white text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-8 px-6 py-5 rounded-xl max-md:px-5"

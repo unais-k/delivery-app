@@ -1,5 +1,3 @@
-import configENV from "@/config";
-import "firebase/compat/auth";
 import { initializeApp } from "firebase/app";
 import getConfig from "next/config";
 import { getAuth } from "firebase/auth";

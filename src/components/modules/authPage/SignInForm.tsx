@@ -1,17 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { FormEvent } from "react";
 import Image from "next/image";
 import { passwordIcon } from "../../../../public";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 
-const SignInForm = () => {
-    const [phone, setPhone] = useState("");
-    const [password, setPassword] = useState("");
+type SignInProps = {
+    phone: string;
+    setPhone: React.Dispatch<React.SetStateAction<string>>;
+    password: string;
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
+    onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};
 
-    const handleFormData = () => {};
+const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPhone, onFormSubmit }) => {
     return (
         <>
-            <form>
+            <form onSubmit={onFormSubmit}>
                 <div className="items-stretch  bg-white flex flex-col justify-center mt-3 px-4 py-3.5 rounded-xl">
                     <div className="items-center flex justify-between gap-3.5">
                         <PhoneInput
@@ -40,7 +44,7 @@ const SignInForm = () => {
                             placeholder="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
+                            className="text-neutral-500 text-lg outline-none bg-transparent focus-within:border-transparent focus:border-transparent border-transparent focus:outline-none font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
                     </div>
                 </div>
