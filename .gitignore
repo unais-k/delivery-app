@@ -7,7 +7,11 @@
 .yarn/install-state.gz
 /text.txt
 /.env
+<<<<<<< HEAD
 /.env.local
+=======
+.env.local
+>>>>>>> 6bf484de272a7f7c8a4a9c7f63b688342f0a3348
 
 # testing
 /coverage

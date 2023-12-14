@@ -1,51 +1,33 @@
 import Image from "next/image";
-import { passwordIcon, userIcon } from "../../../../public";
-import { useState } from "react";
+import { passwordIcon, phoneIcon, userIcon } from "../../../../public";
+import React, { useState, FormEvent } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-import { Auth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { useRouter } from "next/router";
-import auth from "@/firebase/firebaseConfig";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-interface ExtendedWindow extends Window {
-    recaptchaVerifier?: any;
-}
+import { auth } from "@/firebase/firebaseConfig";
 
 const SignUpForm = () => {
-    const [fullName, setFullName] = useState<string>("");
-    const [phone, setPhone] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
 
-    const extendedWindow = window as ExtendedWindow;
-    const router = useRouter();
-    const handleOnCaptchaVerify = () => {
-        if (!extendedWindow.recaptchaVerifier) {
-            extendedWindow.recaptchaVerifier = new RecaptchaVerifier(auth as Auth, "recaptcha", {});
-        }
-    };
+    const handleFormData = async () => {};
 
-    const formattedPhone = `+${phone.replace(/\D/g, "")}`;
+    const getOtp = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-    const handleOTP = async () => {
         try {
-            handleOnCaptchaVerify();
+            const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha", {});
 
-            const appVerifier = extendedWindow.recaptchaVerifier;
-            appVerifier.render();
-
-            const response = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
-        } catch (error: any) {
+            const confirmation = await signInWithPhoneNumber(auth, `+${phone}`, recaptchaVerifier);
+        } catch (error) {
             console.log(error);
         }
     };
 
-    const handleFormData = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        handleOTP();
-    };
     return (
         <>
-            <form onSubmit={handleFormData}>
+            <form onSubmit={getOtp}>
                 <div className="items-stretch bg-white flex flex-col justify-center px-4 mt-6">
                     <div className="items-center border flex justify-between gap-3.5 px-4 py-3.5  rounded-xl border-solid border-zinc-300">
                         <Image
@@ -56,9 +38,6 @@ const SignUpForm = () => {
                         />
                         <input
                             type="text"
-                            name="fullName"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
                             placeholder="full name"
                             className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
@@ -78,6 +57,7 @@ const SignUpForm = () => {
                         className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
                     /> */}
                     </div>
+                    <div id="recaptcha"></div>
                 </div>
                 <div className="items-stretch bg-white flex flex-col justify-center px-4  mt-3">
                     <div className="items-center border flex justify-between gap-3.5 px-4 py-3.5  rounded-md border-solid border-zinc-300">
@@ -89,8 +69,6 @@ const SignUpForm = () => {
                         />
                         <input
                             type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                             placeholder="password"
                             className="text-neutral-500 text-lg outline-none bg-transparent font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
