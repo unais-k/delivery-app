@@ -1,5 +1,6 @@
 import configENV from "@/config";
-import firebase from "firebase/compat/app";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
@@ -12,9 +13,6 @@ const firebaseConfig = {
     measurementId: configENV.MEASUREMENT_ID,
 };
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-
-export const firebaseAuth = firebase.auth();
-export default firebase;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+export default auth;
