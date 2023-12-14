@@ -17,9 +17,11 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState("");
     const [otpSend, setOtpSend] = useState(false);
     const [verification, setVerification] = useState<any>({});
-    const [otp, setOtp] = useState<string>("");
+    const [otp, setOtp] = useState<string[]>(['', '', '', '', '', '']);
 
     const router = useRouter();
+
+   
 
     const handleRegister = () => {
         if (!isRegister) {
@@ -36,12 +38,28 @@ const Login: React.FC = () => {
     const handleVerifyOTP = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log("verify confirming", otp);
-        alert("otp confirming");
-        alert("write verification logic");
-        router.push("/");
+        try {
+            const otpString=otp.join("")
+            console.log(otpString)
+          const data= await verification.confirm(otpString)
+          if (data) {
+            alert("otp confirmation success");
+            router.push("/");
+          }
 
-        // Continue with your OTP verification logic, e.g., calling an API or Firebase authentication
+          console.log(data,333)
+        } catch (error) {
+            alert(error)
+        }
+
+        
+
+        // console.log("verify confirming", otp);
+        // alert("otp confirming");
+        // alert("write verification logic");
+        // router.push("/");
+
+        
     };
 
     const handleOTP = async (e: FormEvent<HTMLFormElement>) => {
@@ -78,7 +96,7 @@ const Login: React.FC = () => {
         console.log("clicked");
     };
 
-    const onChange = (value: string) => setOtp(value);
+  
 
     return (
         <div className="justify-center items-center bg-zinc-900 bg-opacity-80 flex w-full flex-col h-screen max-md:max-w-full">
@@ -118,7 +136,7 @@ const Login: React.FC = () => {
                 ) : null}
 
                 {otpSend ? (
-                    <OTPForm value={otp} valueLength={6} onChange={onChange} onFormSubmit={handleVerifyOTP} />
+                    <OTPForm otp={otp}   setOtp={setOtp} onFormSubmit={handleVerifyOTP} />
                 ) : null}
 
                 <div className="justify-start items-stretch flex mt-8">

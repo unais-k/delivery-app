@@ -1,159 +1,142 @@
 import Image from "next/image";
-import { ChangeEvent, Dispatch, FormEvent, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  useMemo,
+  useRef,
+  useState,
+  useEffect
+} from "react";
 
 type OTPProps = {
-    value: string;
-    valueLength: number;
-    onChange: (value: string) => void;
-    onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  otp: string[];
+ 
+  setOtp: (value: string[]) => void;
+  onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
 };
 
-const OTPForm: React.FC<OTPProps> = ({ value, valueLength, onChange, onFormSubmit }) => {
-    const RE_DIGIT = new RegExp(/^\d+$/);
+const OTPForm: React.FC<OTPProps> = ({
+ otp,
+ 
+ setOtp,
+  onFormSubmit,
+}) => {
+   
+    
+    const inputRefs = Array.from({ length: 6 }, () => useRef<HTMLInputElement>(null));
+    const isInitialRender = useRef(true);
+  const RE_DIGIT = new RegExp(/^\d+$/);
 
-    const valueItems = useMemo(() => {
-        if (!value || value.length !== valueLength) {
-            value = "111111";
-        }
-        const valueArray = value ? value.split("") : [];
-        const items: Array<string> = [];
+  useEffect(() => {
+   
+    if (isInitialRender.current) {
+      inputRefs[0]?.current?.focus();
+      isInitialRender.current = false;
+    }
+  }, []);
 
-        for (let i = 0; i < valueLength; i++) {
-            const char = valueArray[i];
 
-            if (RE_DIGIT.test(char)) {
-                items.push(char);
-            } else {
-                items.push("");
-            }
-        }
 
-        return items;
-    }, [value, valueLength]);
 
-    const focusToNextInput = (target: HTMLElement) => {
-        const nextElementSibling = target.nextElementSibling as HTMLInputElement | null;
 
-        if (nextElementSibling) {
-            nextElementSibling.focus();
-        }
-    };
-    const focusToPrevInput = (target: HTMLElement) => {
-        const previousElementSibling = target.previousElementSibling as HTMLInputElement | null;
 
-        if (previousElementSibling) {
-            previousElementSibling.focus();
-        }
-    };
 
-    const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
-        const target = e.target;
-        let targetValue = target.value.trim();
-        const isTargetValueDigit = RE_DIGIT.test(targetValue);
+  const focusToNextInput = (target: HTMLElement) => {
+    const nextElementSibling =
+      target.nextElementSibling as HTMLInputElement | null;
 
-        if (!isTargetValueDigit && targetValue !== "") {
-            return;
-        }
+    if (nextElementSibling) {
+      nextElementSibling.focus();
+    }
+  };
+  const focusToPrevInput = (target: HTMLElement) => {
+    const previousElementSibling =
+      target.previousElementSibling as HTMLInputElement | null;
 
-        const nextInputEl = target.nextElementSibling as HTMLInputElement | null;
+    if (previousElementSibling) {
+      previousElementSibling.focus();
+    }
+  };
 
-        if (!isTargetValueDigit && nextInputEl && nextInputEl.value !== "") {
-            return;
-        }
+  
+  const handleChange = (index: number, value: string) => {
 
-        targetValue = isTargetValueDigit ? targetValue : " ";
+    console.log(otp)
+    const newOtp = [...otp];
+    newOtp[index] = value;
 
-        const targetValueLength = targetValue.length;
+    setOtp(newOtp);
 
-        if (targetValueLength === 1) {
-            const newValue = (value ?? "").substring(0, idx) + targetValue + (value ?? "").substring(idx + 1);
+    // Move focus to the next input if the current input is not the last one and has a value
+    if (index < inputRefs.length - 1 && value !== '') {
+      inputRefs[index + 1]?.current?.focus();
+    }
+  };
+  const inputOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const { key } = e;
+    const target = e.target as HTMLInputElement;
 
-            onChange(newValue);
+    if (key === "ArrowRight" || key === "ArrowDown") {
+      e.preventDefault();
+      return focusToNextInput(target);
+    }
 
-            if (!isTargetValueDigit) {
-                return;
-            }
+    if (key === "ArrowLeft" || key === "ArrowUp") {
+      e.preventDefault();
+      return focusToPrevInput(target);
+    }
 
-            focusToNextInput(target);
-        } else if (targetValueLength === valueLength) {
-            onChange(targetValue);
+    const targetValue = target.value;
 
-            target.blur();
-        }
-    };
+    target.setSelectionRange(0, targetValue.length);
 
-    const inputOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        const { key } = e;
-        const target = e.target as HTMLInputElement;
+    if (e.key !== "Backspace" || targetValue !== "") {
+      return;
+    }
 
-        if (key === "ArrowRight" || key === "ArrowDown") {
-            e.preventDefault();
-            return focusToNextInput(target);
-        }
+    focusToPrevInput(target);
+  };
+ 
 
-        if (key === "ArrowLeft" || key === "ArrowUp") {
-            e.preventDefault();
-            return focusToPrevInput(target);
-        }
-
-        const targetValue = target.value;
-
-        target.setSelectionRange(0, targetValue.length);
-
-        if (e.key !== "Backspace" || targetValue !== "") {
-            return;
-        }
-
-        focusToPrevInput(target);
-    };
-    const inputOnFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-        const { target } = e;
-
-        const prevInputEl = target.previousElementSibling as HTMLInputElement | null;
-
-        if (prevInputEl && prevInputEl.value === "") {
-            return prevInputEl.focus();
-        }
-
-        target.setSelectionRange(0, target.value.length);
-    };
-
-    return (
-        <form onSubmit={onFormSubmit}>
-            <div className="items-stretch bg-white flex flex-col justify-center px-4 py-5  mt-3">
-                <div className="items-center flex justify-between">
-                    {valueItems.map((digit, idx) => (
-                        <input
-                            key={idx}
-                            type="text"
-                            inputMode="numeric"
-                            autoComplete="one-time-code"
-                            pattern="\d{1}"
-                            maxLength={valueLength}
-                            className="w-10 text-lg text-black  bg-transparent p-2 border border-solid h-10 font-semibold"
-                            value={digit}
-                            onChange={(e) => inputOnChange(e, idx)}
-                            onKeyDown={inputOnKeyDown}
-                            onFocus={inputOnFocus}
-                        />
-                    ))}
-                </div>
-            </div>
-            <div className="flex justify-between items-center">
-                <button
-                    type="submit"
-                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
-                >
-                    Verify
-                </button>
-                <button
-                    type="button"
-                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
-                >
-                    Resend OTP
-                </button>
-            </div>
-        </form>
-    );
+  return (
+    <form onSubmit={onFormSubmit}>
+      <div className="items-stretch bg-white flex flex-col justify-center px-4 py-5  mt-3">
+        <div className="items-center flex justify-between">
+          {otp.map((digit, index) => (
+            <input
+              key={index}
+              type="text"
+              inputMode="numeric"
+              autoComplete="one-time-code"
+              pattern="\d{1}"
+              maxLength={1}
+              ref={inputRefs[index]}
+              className="w-10 text-lg text-black  bg-transparent p-2 border border-solid h-10 font-semibold"
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(index, e.target.value)}
+              onKeyDown={inputOnKeyDown}
+             
+            />
+          ))}
+            
+        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        <button
+        
+          type="submit"
+          className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
+        >
+          Verify
+        </button>
+        <button
+          type="button"
+          className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
+        >
+          Resend OTP
+        </button>
+      </div>
+    </form>
+  );
 };
 export default OTPForm;
