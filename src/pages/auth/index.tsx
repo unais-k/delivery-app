@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { closeIcon, passwordIcon, userIcon } from "../../../public";
+import { closeIcon } from "../../../public";
 import SignInForm from "@/components/modules/authPage/SignInForm";
 import SignUpForm from "@/components/modules/authPage/SignUpForm";
 

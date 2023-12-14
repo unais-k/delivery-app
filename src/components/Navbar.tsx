@@ -3,10 +3,12 @@ import { Text } from "./modules/ui/Text";
 import { Img } from "./modules/ui/Image";
 import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
+import { useRouter } from "next/router";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
+    const router = useRouter();
     return (
         <>
             <header
@@ -57,7 +59,10 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         >
                             <div className="font-semibold font-poppins ps-3 text-gray-900 text-left text-lg">Search</div>
                         </Button>
-                        <Button className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white">
+                        <Button
+                            onClick={() => router.push("/auth")}
+                            className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white"
+                        >
                             Log in
                         </Button>
                     </div>
