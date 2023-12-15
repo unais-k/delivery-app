@@ -7,6 +7,8 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "@/firebase/firebaseConfig";
 import OTPForm from "@/components/modules/authPage/OTPForm";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { handleSIGNUP } from "./utils";
 
 const Login: React.FC = () => {
     const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -17,11 +19,9 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState("");
     const [otpSend, setOtpSend] = useState(false);
     const [verification, setVerification] = useState<any>({});
-    const [otp, setOtp] = useState<string[]>(['', '', '', '', '', '']);
+    const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
 
     const router = useRouter();
-
-   
 
     const handleRegister = () => {
         if (!isRegister) {
@@ -39,27 +39,31 @@ const Login: React.FC = () => {
         e.preventDefault();
 
         try {
-            const otpString=otp.join("")
-            console.log(otpString)
-          const data= await verification.confirm(otpString)
-          if (data) {
-            alert("otp confirmation success");
-            router.push("/");
-          }
+            const otpString = otp.join("");
+            const data = await verification.confirm(otpString);
+            const RegisterData = {
+                fullName: fullName,
+                phone: phone,
+                password: password,
+            };
+            if (data) {
+                toast.info("otp");
+                const response = await handleSIGNUP(RegisterData);
+                console.log(response);
 
-          console.log(data,333)
+                router.push("/");
+            }
         } catch (error) {
-            alert(error)
+            alert(error);
+            router.push("/auth");
+            setOtpSend(false);
+            setIsRegister(true);
         }
-
-        
 
         // console.log("verify confirming", otp);
         // alert("otp confirming");
         // alert("write verification logic");
         // router.push("/");
-
-        
     };
 
     const handleOTP = async (e: FormEvent<HTMLFormElement>) => {
@@ -76,6 +80,7 @@ const Login: React.FC = () => {
                     setOtpSend(true);
                     setIsRegister(false);
                     setIsLogin(false);
+                    toast.info(`OTP Send to the ${phone}`);
                 })
                 .catch((error: any) => {
                     console.log(error.message);
@@ -95,8 +100,6 @@ const Login: React.FC = () => {
         }
         console.log("clicked");
     };
-
-  
 
     return (
         <div className="justify-center items-center bg-zinc-900 bg-opacity-80 flex w-full flex-col h-screen max-md:max-w-full">
@@ -135,9 +138,7 @@ const Login: React.FC = () => {
                     />
                 ) : null}
 
-                {otpSend ? (
-                    <OTPForm otp={otp}   setOtp={setOtp} onFormSubmit={handleVerifyOTP} />
-                ) : null}
+                {otpSend ? <OTPForm otp={otp} setOtp={setOtp} onFormSubmit={handleVerifyOTP} /> : null}
 
                 <div className="justify-start items-stretch flex mt-8">
                     <div
