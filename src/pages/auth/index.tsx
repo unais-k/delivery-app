@@ -8,7 +8,8 @@ import { auth } from "@/firebase/firebaseConfig";
 import OTPForm from "@/components/modules/authPage/OTPForm";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { handleSIGNUP } from "./utils";
+import { handleSIGNUP,handleLogin } from "./utils";
+import { useSpring, animated } from 'react-spring';
 
 const Login: React.FC = () => {
     const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -20,8 +21,14 @@ const Login: React.FC = () => {
     const [otpSend, setOtpSend] = useState(false);
     const [verification, setVerification] = useState<any>({});
     const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
+    const [isRotating, setRotating] = useState(false);
 
     const router = useRouter();
+
+    const rotateSpring = useSpring({
+        transform: isRotating ? 'rotate(360deg)' : 'rotate(0deg)',
+        config: { tension: 500, friction: 20 },
+      });
 
     const handleRegister = () => {
         if (!isRegister) {
@@ -90,15 +97,33 @@ const Login: React.FC = () => {
         }
     };
 
-    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    const Login = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (phone.length < 10) {
-            // error
+            return alert("not enough number");
         }
-        if (password.length < 4) {
-            // error
+       
+        try {
+            const loginData = {
+              
+                phone: phone,
+                password: password,
+            };
+           const response= await handleLogin (loginData) 
+
+           if (response.status) {
+            toast.success(response.message);
+            router.push("/");
+           }
+           else{
+            console.log(12121212)
+            console.log(response,777)
+            toast.error(response.message)
+           }
+        } catch (error) {
+            
         }
-        console.log("clicked");
+       ;
     };
 
     return (
@@ -134,7 +159,7 @@ const Login: React.FC = () => {
                         setPhone={setPhone}
                         password={password}
                         setPassword={setPassword}
-                        onFormSubmit={handleLogin}
+                        onFormSubmit={Login}
                     />
                 ) : null}
 
