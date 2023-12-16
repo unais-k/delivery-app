@@ -36,6 +36,7 @@ const Login: React.FC = () => {
     };
 
     const handleVerifyOTP = async (e: FormEvent<HTMLFormElement>) => {
+        // register
         e.preventDefault();
 
         try {

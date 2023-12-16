@@ -9,7 +9,7 @@ export const handleSIGNUP = async (data: Object) => {
         return { msg: "error" };
     }
 
-    localStorage.setItem("token", JSON.stringify(responseData.token));
-    localStorage.setItem("userID", JSON.stringify(responseData.userData._id));
+    // localStorage.setItem("token", JSON.stringify(responseData.token));
+    // localStorage.setItem("userID", JSON.stringify(responseData.userData._id));
     return responseData;
 };
