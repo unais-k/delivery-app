@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import Image from "next/image";
 import { closeIcon } from "../../../public";
 import SignInForm from "@/components/modules/authPage/SignInForm";
@@ -8,7 +8,10 @@ import { auth } from "@/firebase/firebaseConfig";
 import OTPForm from "@/components/modules/authPage/OTPForm";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { handleSIGNUP } from "./utils";
+import { handleSignUP, handleLogin } from "./utils";
+import { useDispatch } from "react-redux";
+import { selectUser, setUser } from "@/lib/slices/userSlice";
+import { useSelector } from "react-redux";
 
 const Login: React.FC = () => {
     const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -16,12 +19,18 @@ const Login: React.FC = () => {
     const [title, setTitle] = useState<string>("Log in");
     const [fullName, setFullName] = useState<string>("");
     const [phone, setPhone] = useState("");
+    const [buttonSubmit, setButtonSubmit] = useState<boolean>(false);
+
     const [password, setPassword] = useState("");
     const [otpSend, setOtpSend] = useState(false);
     const [verification, setVerification] = useState<any>({});
     const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
 
     const router = useRouter();
+    const dispatch = useDispatch();
+
+    const user = useSelector(selectUser);
+    // to get userData from redux
 
     const handleRegister = () => {
         if (!isRegister) {
@@ -36,7 +45,6 @@ const Login: React.FC = () => {
     };
 
     const handleVerifyOTP = async (e: FormEvent<HTMLFormElement>) => {
-        // register
         e.preventDefault();
 
         try {
@@ -49,7 +57,7 @@ const Login: React.FC = () => {
             };
             if (data) {
                 toast.info("otp");
-                const response = await handleSIGNUP(RegisterData);
+                const response = await handleSignUP(RegisterData);
                 console.log(response);
 
                 router.push("/");
@@ -60,11 +68,6 @@ const Login: React.FC = () => {
             setOtpSend(false);
             setIsRegister(true);
         }
-
-        // console.log("verify confirming", otp);
-        // alert("otp confirming");
-        // alert("write verification logic");
-        // router.push("/");
     };
 
     const handleOTP = async (e: FormEvent<HTMLFormElement>) => {
@@ -91,15 +94,28 @@ const Login: React.FC = () => {
         }
     };
 
-    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    const Login = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (phone.length < 10) {
-            // error
+            return alert("not enough number");
         }
-        if (password.length < 4) {
-            // error
-        }
-        console.log("clicked");
+
+        try {
+            const loginData = {
+                phone: phone,
+                password: password,
+            };
+            setButtonSubmit(true);
+            const response = await handleLogin(loginData);
+
+            if (response.status) {
+                toast.success(response.message);
+                dispatch(setUser(response?.result));
+                router.push("/");
+            } else {
+                toast.error(response.message);
+            }
+        } catch (error) {}
     };
 
     return (
@@ -121,6 +137,7 @@ const Login: React.FC = () => {
                     <SignUpForm
                         phone={phone}
                         setPhone={setPhone}
+                        buttonSubmit={buttonSubmit}
                         password={password}
                         setPassword={setPassword}
                         fullName={fullName}
@@ -131,11 +148,12 @@ const Login: React.FC = () => {
 
                 {isLogin ? (
                     <SignInForm
+                        buttonSubmit={buttonSubmit}
                         phone={phone}
                         setPhone={setPhone}
                         password={password}
                         setPassword={setPassword}
-                        onFormSubmit={handleLogin}
+                        onFormSubmit={Login}
                     />
                 ) : null}
 

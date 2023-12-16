@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Schema, Model } from "mongoose";
 
 interface Address {
     type: Schema.Types.ObjectId;
@@ -85,6 +85,6 @@ const UserSchema: Schema = new Schema(
         timestamps: true,
     }
 );
-
-const User = mongoose.model<UserDocument>("User", UserSchema);
+type UserModel = Model<UserDocument>;
+const User: UserModel = mongoose.models.User || mongoose.model<UserDocument>("User", UserSchema);
 export default User;

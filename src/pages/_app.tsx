@@ -1,6 +1,5 @@
 import "@/styles/style.css";
 import type { AppProps } from "next/app";
-
 import AppWrapper from "@/components/wrapper/AppWrapper";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";

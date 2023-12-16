@@ -12,6 +12,7 @@ type SignUpProps = {
     fullName: string;
     setFullName: React.Dispatch<React.SetStateAction<string>>;
     phone: string;
+    buttonSubmit: boolean;
     setPhone: React.Dispatch<React.SetStateAction<string>>;
     password: string;
     setPassword: React.Dispatch<React.SetStateAction<string>>;
@@ -23,31 +24,12 @@ const SignUpForm: React.FC<SignUpProps> = ({
     setPassword,
     password,
     setPhone,
+    buttonSubmit,
     fullName,
     setFullName,
     onFormSubmit,
 }) => {
     const router = useRouter();
-
-    // const getOtp = async (e: FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha", {});
-
-    //         const confirmation = await signInWithPhoneNumber(auth, `+${phone}`, recaptchaVerifier)
-    //             .then((confirm) => {
-    //                 router.push("/auth/otp");
-    //                 setVerification(confirm);
-    //                 console.log(confirm);
-    //             })
-    //             .catch((error: any) => {
-    //                 console.log(error.message);
-    //             });
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
 
     return (
         <>
@@ -98,12 +80,30 @@ const SignUpForm: React.FC<SignUpProps> = ({
                 </div>
 
                 <div className="mt-3 ms-4" id="recaptcha"></div>
-                <button
-                    type="submit"
-                    className="text-white text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-8 px-6 py-5 rounded-xl max-md:px-5"
-                >
-                    Register
-                </button>
+                {buttonSubmit ? (
+                    <div className="sm:px-4 px-0">
+                        <div className="flex gap-1 text-white text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-5 rounded-xl max-md:px-5">
+                            <Image
+                                width={20}
+                                height={20}
+                                alt="password"
+                                loading="lazy"
+                                className="animate-spin"
+                                src="loaderIcon.svg"
+                            />
+                            processing
+                        </div>
+                    </div>
+                ) : (
+                    <div className="sm:px-4 px-0">
+                        <button
+                            type="submit"
+                            className="text-white w-full text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-5 rounded-xl max-md:px-5"
+                        >
+                            Register
+                        </button>
+                    </div>
+                )}
             </form>
         </>
     );

@@ -5,9 +5,10 @@ import { Jwt } from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    await connectDB();
-    console.log(req.body, "userData signUp page");
+    console.log(req.body, "userData route Page");
+    console.log(typeof req.body.phone);
     try {
+        await connectDB();
         if (req.method !== "POST") {
             res.status(400).json({
                 isError: true,
@@ -16,12 +17,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
         }
 
-        let findUser = await User.findOne({ email: req.body.email }).lean().exec();
+        let findUser = await User.findOne({ phone: req.body.phone });
+        console.log(findUser);
         if (findUser !== null) {
             res.status(200).json({
                 isError: false,
                 isSuccess: false,
-                msg: "User with same email already exists",
+                msg: "User with same phone number already exists",
             });
             return;
         }
