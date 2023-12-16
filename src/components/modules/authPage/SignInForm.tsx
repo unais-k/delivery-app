@@ -3,6 +3,8 @@ import Image from "next/image";
 import { passwordIcon } from "../../../../public";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
+import SubmitButton from "./SubmitButton";
+
 
 type SignInProps = {
     phone: string;
@@ -15,7 +17,7 @@ type SignInProps = {
 const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPhone, onFormSubmit }) => {
     return (
         <>
-            <form onSubmit={onFormSubmit}>
+            <form >
                 <div className="items-stretch  bg-white flex flex-col justify-center mt-3 px-4 py-3.5 rounded-xl">
                     <div className="items-center flex justify-between gap-3.5">
                         <PhoneInput
@@ -50,12 +52,7 @@ const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPh
                 </div>
                 <div className="text-zinc-900 text-right text-lg font-bold leading-5 mt-4">Forgot Password</div>
 
-                <button
-                    type="submit"
-                    className="text-white text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-5 rounded-xl max-md:px-5"
-                >
-                    Log in
-                </button>
+               <SubmitButton label="Log in" onSubmit={onFormSubmit}/>
             </form>
         </>
     );

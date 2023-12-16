@@ -1,6 +1,7 @@
 import "@/styles/style.css";
 import type { AppProps } from "next/app";
-
+import { useEffect } from 'react';
+import connectDB from '@/lib/mongooseConnect';
 import AppWrapper from "@/components/wrapper/AppWrapper";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
@@ -13,8 +14,12 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+    useEffect(() => {
+        connectDB();
+      }, []);
     const getLayout = Component.getLayout;
     const defaultLayout = getLayout || ((page) => page);
+    
 
     return <AppWrapper>{defaultLayout(<Component {...pageProps} />)}</AppWrapper>;
 }

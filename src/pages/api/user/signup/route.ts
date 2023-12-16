@@ -4,9 +4,11 @@ import bcrypt from "bcrypt";
 import { Jwt } from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    await connectDB();
-    console.log(req.body, "userData signUp page");
+    console.log(11111111111111)
+    console.log(req.body, "userData route Page");
     try {
         if (req.method !== "POST") {
             res.status(400).json({
@@ -26,21 +28,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
         }
 
-        // let salt = await bcrypt.genSalt();
-        // let hashedPassword = await bcrypt.hash(req.body.password!, salt);
-        // let user = await User.create({
-        //     name: req.body.name,
-        //     email: req.body.email,
-        //     password: hashedPassword,
-        //     salt,
-        // });
+        let salt = await bcrypt.genSalt();
+        let hashedPassword = await bcrypt.hash(req.body.password!, salt);
+        let user = await User.create({
+            fullName: req.body.fullName,
+            phone: req.body.phone,
+            password: hashedPassword,
+        });
 
-        // res.status(200).json({
-        //     isError: false,
-        //     isSuccess: true,
-        //     msg: "Sign up Successful",
-        //     userData: user,
-        // });
+        console.log(user)
+
+        res.status(200).json({
+            isError: false,
+            isSuccess: true,
+            msg: "Sign up Successful",
+            userData: user,
+        });
     } catch (error: any) {
         console.log(error.message, "=======");
         res.json({ error: error.message });
