@@ -4,6 +4,7 @@ import { Img } from "@/components/modules/ui/Image";
 import { Input } from "@/components/modules/ui/Input";
 import { Text } from "@/components/modules/ui/Text";
 
+
 const LandingSection = () => {
     return (
         <>
