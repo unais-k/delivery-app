@@ -3,7 +3,6 @@ import Image from "next/image";
 import { passwordIcon } from "../../../../public";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-import SubmitButton from "./SubmitButton";
 
 type SignInProps = {
     phone: string;
@@ -46,8 +45,27 @@ const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPh
                             placeholder="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            autoComplete="off"
+                            autoCorrect="off"
+                            autoCapitalize="off"
+                            spellCheck="false"
+                            aria-invalid="false"
                             className="text-neutral-500 text-lg outline-none bg-transparent focus-within:border-transparent focus:border-transparent border-transparent focus:outline-none font-semibold leading-8 self-stretch grow shrink basis-auto"
                         />
+                        {/* <input
+                            id="email"
+                            name="email"
+                            className="flex w-full appearance-none items-center px-4 text-sm text-heading transition duration-300 ease-in-out focus:outline-0 focus:ring-0 border border-border-base rounded focus:border-accent h-12"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            type="password"
+                            placeholder="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            autoCapitalize="off"
+                            spellCheck="false"
+                            aria-invalid="false"
+                        ></input> */}
                     </div>
                 </div>
                 <div className="text-zinc-900 text-right text-lg font-bold leading-5 mt-4">Forgot Password</div>
