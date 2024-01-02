@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import { Text } from "./modules/ui/Text";
-import { Img } from "./modules/ui/Image";
 import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
 import { selectUser } from "@/lib/slices/userSlice";
 import { useSelector } from "react-redux";
 import Header from "./Header";
-
+import { Img } from "@/components/modules/ui/Image";
+import { Text } from "@/components/modules/ui/Text";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
@@ -15,15 +14,30 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
     const user = useSelector(selectUser);
     const router = useRouter();
 
-
-  
     return (
         <>
-       
-            <header
-                className={`${props.className}flex justify-center bg-white z-50 fixed shadow-md h-[80px] items-center w-full `}
-            >
-                <div className="flex flex-row items-center justify-between h-full sm:px-16 px-6">
+            <header className={`flex justify-center bg-white items-center w-full `}>
+                <div className="flex flex-col w-full py-5">
+                    {/* navbar */}
+                    <div className="flex justify-between items-center sm:px-10 px-2">
+                        {/* logo */}
+                        <div className="flex flex-row gap-2">
+                            <Img className="h-6 w-[35%]" src="images/img_volume.svg" alt="volume" />
+                            <Text className="text-2xl md:text-[22px] text-gray-800 sm:text-xl" size="txtPoppinsBold24">
+                                Elliye
+                            </Text>
+                        </div>
+                        {/* search */}
+                        <div className="border border-solid border-gray-200 hidden md:flex md:justify-center">
+                            <input type="text" className="outline-none placeholder:ps-1 placeholder:text-gray-100" placeholder="Search here" />
+                        </div>
+                        {/* cart and login */}
+                        <div></div>
+                    </div>
+                    {/* nav items */}
+                    <div></div>
+                </div>
+                {/* <div className="flex flex-row items-center justify-between h-full sm:px-16 px-6">
                     <div className="header-row my-px">
                         <div className="flex flex-row gap-[11px] justify-start">
                             <Img className="" src="LogoImage.svg" alt="home" width={40} height={40} />
@@ -85,7 +99,7 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                            Log in
                         </Button>}
                     </div>
-                </div>
+                </div> */}
             </header>
         </>
     );
