@@ -22,9 +22,9 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
             <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ToastContainer />
-                {isNavbarAllowed && isOTP && <Navbar />}
+              
                 <main>{children} </main>
-                {isNavbarAllowed && isOTP && <Footer />}
+                
                 </PersistGate>
             </Provider>
             {/* {isNavbarAllowed && <Footer />} */}

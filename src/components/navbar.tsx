@@ -6,6 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
 import { selectUser } from "@/lib/slices/userSlice";
 import { useSelector } from "react-redux";
+import Header from "./Header";
 
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
@@ -18,6 +19,7 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
   
     return (
         <>
+       
             <header
                 className={`${props.className}flex justify-center bg-white z-50 fixed shadow-md h-[80px] items-center w-full `}
             >
