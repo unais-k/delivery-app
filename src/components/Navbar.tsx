@@ -7,6 +7,11 @@ import { useSelector } from "react-redux";
 import Header from "./Header";
 import { Img } from "@/components/modules/ui/Image";
 import { Text } from "@/components/modules/ui/Text";
+import { Input } from "@/components/modules/ui/Input";
+import { Line } from "@/components/modules/ui/Line";
+import { BiSearch } from "react-icons/bi";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { GoHeart } from "react-icons/go";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
@@ -17,9 +22,9 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
     return (
         <>
             <header className={`flex justify-center bg-white items-center w-full `}>
-                <div className="flex flex-col w-full py-5">
+                <div className="flex flex-col w-full py-5 sm:px-16 px-3">
                     {/* navbar */}
-                    <div className="flex justify-between items-center sm:px-10 px-2">
+                    <div className="flex justify-between items-center">
                         {/* logo */}
                         <div className="flex flex-row gap-2">
                             <Img className="h-6 w-[35%]" src="images/img_volume.svg" alt="volume" />
@@ -28,14 +33,51 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                             </Text>
                         </div>
                         {/* search */}
-                        <div className="border border-solid border-gray-200 hidden md:flex md:justify-center">
-                            <input type="text" className="outline-none placeholder:ps-1 placeholder:text-gray-100" placeholder="Search here" />
+                        <div className="md:block hidden">
+                            <div className="border border-solid justify-between rounded-md border-gray-200 flex flex-row w-72">
+                                <Input
+                                    type="text"
+                                    className="outline-none placeholder:ps-3 ps-3 py-3 placeholder:text-gray-300 placeholder:text-[18px] placeholder:font-medium"
+                                    placeholder="Search here"
+                                />
+                                <span className="h-12 w-12 rounded-r-md bg-[#393D46] flex justify-center items-center">
+                                    <BiSearch size={25} color={"white"} />
+                                </span>
+                            </div>
                         </div>
                         {/* cart and login */}
-                        <div></div>
+                        <div className="flex flex-row gap-x-3 items-center justify-between">
+                            <MdOutlineShoppingCart size={25} color={"black"} />
+                            <GoHeart size={25} color={"black"} />
+                            <Text
+                                size="txtPoppinsBold24"
+                                className="cursor-pointer font-bold leading-[normal] text-center text-sm px-3"
+                            >
+                                Login
+                            </Text>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-center justify-center mt-5 ">
+                        <Line className="bg-gray-200 h-px w-full" />
                     </div>
                     {/* nav items */}
-                    <div></div>
+                    <div className="flex flex-row md:gap-10 gap-20 items-center justify-center mt-[25px] w-full">
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Categories
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            New Arrival
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Features
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Collections
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Discount
+                        </Text>
+                    </div>
                 </div>
                 {/* <div className="flex flex-row items-center justify-between h-full sm:px-16 px-6">
                     <div className="header-row my-px">
