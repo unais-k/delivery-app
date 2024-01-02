@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text } from "./modules/ui/Text";
 import { Img } from "./modules/ui/Image";
 import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
+import { selectUser } from "@/lib/slices/userSlice";
+import { useSelector } from "react-redux";
+import Header from "./Header";
+
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
+    const user = useSelector(selectUser);
     const router = useRouter();
+
+
+  
     return (
         <>
+       
             <header
                 className={`${props.className}flex justify-center bg-white z-50 fixed shadow-md h-[80px] items-center w-full `}
             >
@@ -27,13 +36,16 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         <div className="flex flex-row gap-10 font-[500] ">
                             <div className="flex flex-row  items-start justify-start ">
                                 <Text className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
-                                    Home
+                                   xxx
                                 </Text>
                                 <IoIosArrowDown size={22} className="pt-1" />
                             </div>
-                            <div className="flex flex-row  items-start justify-start ">
-                                <Text className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
-                                    Listing
+                            <div
+                           
+                            className="flex flex-row  items-start justify-start">
+                                <Text
+                                 className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
+                                    List
                                 </Text>
                                 <IoIosArrowDown size={22} className="pt-1" />
                             </div>
@@ -59,12 +71,19 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         >
                             <div className="font-semibold font-poppins ps-3 text-gray-900 text-left text-lg">Search</div>
                         </Button>
-                        <Button
-                            onClick={() => router.push("/auth")}
+                       { user.fullName?<Button
+              
                             className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white"
                         >
-                            Log in
+                            Log out
                         </Button>
+                        :
+                        <Button
+                        onClick={() => router.push("/auth")}
+                            className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white"
+                        >
+                           Log in
+                        </Button>}
                     </div>
                 </div>
             </header>

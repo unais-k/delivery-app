@@ -3,7 +3,7 @@ import { passwordIcon, phoneIcon, userIcon } from "../../../../public";
 import React, { useState, FormEvent } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+
 
 import { auth } from "@/firebase/firebaseConfig";
 import { useRouter } from "next/router";

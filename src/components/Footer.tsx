@@ -4,114 +4,193 @@ import { Text } from "@/components/modules/ui/Text";
 import { footerLinks } from "@/constants/appConstants";
 import Accordion from "./modules/ui/Accordion";
 
-type FooterProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
+
+
+type FooterProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+> &
+  Partial<{}>;
 
 const Footer: React.FC<FooterProps> = (props) => {
-    return (
-        <>
-            <footer className={props.className}>
-                <div className="md:px-20 w-full my-20">
-                    <section className="flex justify-center items-center sm:py-16 py-6 flex-col">
-                        <div className="flex justify-center items-start md:flex-row flex-col mb-8 w-full">
-                            <div className="flex flex-col items-start w-full justify-center md:justify-start mr-10">
-                                <Img
-                                    width={500}
-                                    height={500}
-                                    className="w-fit h-[72.14px] object-contain"
-                                    src="/LogoImage.svg"
-                                    alt="home_One"
-                                />
-                                <Text className="text-orange-400 text-xl w-auto" size="txtUrbanistSemiBold18">
-                                    Delivery
-                                </Text>
-                            </div>
-                            <div className="hidden sm:block sm:w-fit w-full px-10">
-                                <div className="flex-[1.5] w-full flex flex-row justify-between gap-x-5 md:mt-0 mt-10">
-                                    {footerLinks.map((footerLink) => (
-                                        <div className="flex flex-col ss:my-0 my-4 min-w-[150px]" key={footerLink.id}>
-                                            <Text className="text-gray-900 text-lg w-full" size="txtPoppinsBold18Gray900">
-                                                {footerLink.title}
-                                            </Text>
-                                            <ul className="list-none mt-4">
-                                                {footerLink.links.map((link, index) => (
-                                                    <Text
-                                                        key={index}
-                                                        size="txtPoppinsSemiBold16"
-                                                        className={`font-poppins font-normal text-[16px] leading-[24px] cursor-pointer ${
-                                                            index !== footerLink.links.length - 1 ? "mb-4" : "mb-0"
-                                                        } `}
-                                                    >
-                                                        {link.name}
-                                                    </Text>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="sm:hidden block w-full px-5 justify-start">
-                                <div className="flex-[1.5] w-full border border-solid flex flex-row justify-between flex-wrap">
-                                    {footerLinks.map((footerLink) => (
-                                        <Accordion key={footerLink.id} title={footerLink.title} links={footerLink.links} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="w-full flex justify-between gap-5 items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-                            <Text className="text-base text-gray-900 w-full" size="txtPoppinsSemiBold16">
-                                © 2023. All rights reserved.
-                            </Text>
-
-                            <div className="flex flex-row gap-3 items-start justify-start">
-                                <div className="flex flex-col h-[30px] items-center justify-start w-[30px]">
-                                    <Img
-                                        width={100}
-                                        height={100}
-                                        className="h-[30px] w-[30px]"
-                                        src="images/img_plus.svg"
-                                        alt="plus"
-                                    />
-                                </div>
-                                <div className="flex flex-col h-[30px] items-center justify-start w-[30px]">
-                                    <Img
-                                        width={100}
-                                        height={100}
-                                        className="h-[30px] w-[30px]"
-                                        src="images/img_twitter.svg"
-                                        alt="twitter"
-                                    />
-                                </div>
-                                <Img
-                                    width={100}
-                                    height={100}
-                                    className="h-[30px] w-[30px]"
-                                    src="images/img_instagram_orange_a700_30x30.svg"
-                                    alt="instagram"
-                                />
-                                <Img
-                                    width={100}
-                                    height={100}
-                                    className="h-[30px] w-[30px]"
-                                    src="images/img_linkedin.svg"
-                                    alt="linkedin"
-                                />
-                                <div className="flex flex-col h-[30px] items-center justify-start w-[30px]">
-                                    <Img
-                                        width={100}
-                                        height={100}
-                                        className="h-[30px] w-[30px]"
-                                        src="images/img_clock_orange_a700.svg"
-                                        alt="clock"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+  return (
+    <>
+      <footer className={props.className}>
+        <div className="flex flex-col md:gap-10 gap-[100px] items-center justify-center mb-8 mt-16 mx-auto w-[85%]">
+          <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+            <div className="flex md:flex-1 flex-col items-start justify-start pr-1.5 pt-1.5 w-[43%] md:w-full">
+              <div className="flex flex-row gap-2 items-start justify-start w-[17%] md:w-full">
+                <Img
+                  className="h-6 w-[35%]"
+                  src="images/img_group19.svg"
+                  alt="GroupNineteen"
+                />
+                <Text
+                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  size="txtPoppinsBold24WhiteA700"
+                >
+                  Elliye{" "}
+                </Text>
+              </div>
+              <Text
+                className="leading-[32.00px] mt-[43px] text-gray-500 text-lg w-[53%] sm:w-full"
+                size="txtPoppinsRegular18Gray500"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor .
+              </Text>
+              <div className="flex flex-col gap-4 items-center justify-start mt-[37px] w-[61%] md:w-full">
+                <div className="flex flex-row gap-2 items-center justify-start pr-1 py-1 w-full">
+                  <Img
+                    className="h-6 w-6"
+                    src="images/img_call.svg"
+                    alt="call"
+                  />
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPoppinsRegular18WhiteA700"
+                  >
+                    +1234567890
+                  </Text>
                 </div>
-            </footer>
-        </>
-    );
+                <div className="flex flex-row gap-2 items-start justify-start pr-1 py-1 w-full">
+                  <Img
+                    className="h-6 w-6"
+                    src="images/img_mail.svg"
+                    alt="mail"
+                  />
+                  <Text
+                    className="mt-1 text-lg text-white-A700"
+                    size="txtPoppinsRegular18WhiteA700"
+                  >
+                    elliye@support.com
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="flex md:flex-1 md:flex-col flex-row md:gap-5 items-start justify-evenly w-[58%] md:w-full">
+              <div className="flex flex-col gap-[45px] items-start justify-start pr-1 py-1 w-[30%] md:w-full">
+                <Text
+                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  size="txtPoppinsBold24WhiteA700"
+                >
+                  Product Links
+                </Text>
+                <div className="flex flex-col items-start justify-start">
+                  <Text
+                    className="text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Categories
+                  </Text>
+                  <Text
+                    className="mt-5 text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    New Arrival
+                  </Text>
+                  <Text
+                    className="mt-[25px] text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Features
+                  </Text>
+                  <Text
+                    className="mt-6 text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Collections
+                  </Text>
+                </div>
+              </div>
+              <div className="flex flex-col gap-[39px] items-start justify-end pr-1 py-1 w-[30%] md:w-full">
+                <Text
+                  className="mt-[3px] text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  size="txtPoppinsBold24WhiteA700"
+                >
+                  Company
+                </Text>
+                <div className="flex flex-col items-start justify-start">
+                  <Text
+                    className="text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    About
+                  </Text>
+                  <Text
+                    className="mt-[21px] text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Blog
+                  </Text>
+                  <Text
+                    className="mt-3.5 text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Careers
+                  </Text>
+                  <Text
+                    className="mt-[18px] text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Services
+                  </Text>
+                  <Text
+                    className="mt-[21px] text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Privacy Policy
+                  </Text>
+                  <Text
+                    className="mt-3.5 text-gray-500 text-lg"
+                    size="txtPoppinsRegular18Gray500"
+                  >
+                    Terms of service
+                  </Text>
+                </div>
+              </div>
+              <div className="flex flex-col items-start justify-start md:mt-0 mt-1 w-[41%] md:w-full">
+                <Text
+                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  size="txtPoppinsBold24WhiteA700"
+                >
+                  Join our Newsletter
+                </Text>
+                <Text
+                  className="mt-[37px] text-gray-500 text-lg w-[87%] sm:w-full"
+                  size="txtPoppinsRegular18Gray500"
+                >
+                  Drop your email below to get update, promotions, coupons, and
+                  more!
+                </Text>
+                <div className="bg-gray-800 border border-solid border-white-A700 flex flex-row items-center justify-between mt-[35px] sm:pl-5 pl-6 w-full">
+                  <Text
+                    className="text-bluegray-100_87 text-lg tracking-[0.36px]"
+                    size="txtPoppinsRegular18Bluegray10087"
+                  >
+                    Enter your email
+                  </Text>
+                  <div className="bg-white-A700 md:h-[31px] h-[60px] p-3.5 relative w-[60px]">
+                    <Img
+                      className="absolute h-[31px] inset-[0] justify-center m-auto w-8"
+                      src="images/img_menu.svg"
+                      alt="menu"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Text
+            className="text-bluegray-100 text-sm"
+            size="txtPoppinsRegular14Bluegray100"
+          >
+            Copyright © 2021 Elliye. All Right Reseved
+          </Text>
+        </div>
+      </footer>
+    </>
+  );
 };
 
 Footer.defaultProps = {};

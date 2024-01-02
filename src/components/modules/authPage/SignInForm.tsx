@@ -4,6 +4,7 @@ import { passwordIcon } from "../../../../public";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 
+
 type SignInProps = {
     phone: string;
     setPhone: React.Dispatch<React.SetStateAction<string>>;
