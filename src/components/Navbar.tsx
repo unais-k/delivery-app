@@ -1,20 +1,85 @@
-import React from "react";
-import { Text } from "./modules/ui/Text";
-import { Img } from "./modules/ui/Image";
+import React, { useEffect } from "react";
 import { Button } from "./modules/ui/Button";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
+import { selectUser } from "@/lib/slices/userSlice";
+import { useSelector } from "react-redux";
+import Header from "./Header";
+import { Img } from "@/components/modules/ui/Image";
+import { Text } from "@/components/modules/ui/Text";
+import { Input } from "@/components/modules/ui/Input";
+import { Line } from "@/components/modules/ui/Line";
+import { BiSearch } from "react-icons/bi";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { GoHeart } from "react-icons/go";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
+    const user = useSelector(selectUser);
     const router = useRouter();
+
     return (
         <>
-            <header
-                className={`${props.className}flex justify-center bg-white z-50 fixed shadow-md h-[80px] items-center w-full `}
-            >
-                <div className="flex flex-row items-center justify-between h-full sm:px-16 px-6">
+            <header className={`flex justify-center bg-white items-center w-full `}>
+                <div className="flex flex-col w-full py-5 sm:px-16 px-3">
+                    {/* navbar */}
+                    <div className="flex justify-between items-center">
+                        {/* logo */}
+                        <div className="flex flex-row gap-2">
+                            <Img className="h-6 w-[35%]" src="images/img_volume.svg" alt="volume" />
+                            <Text className="text-2xl md:text-[22px] text-gray-800 sm:text-xl" size="txtPoppinsBold24">
+                                Elliye
+                            </Text>
+                        </div>
+                        {/* search */}
+                        <div className="md:block hidden">
+                            <div className="border border-solid justify-between rounded-md border-gray-200 flex flex-row w-72">
+                                <Input
+                                    type="text"
+                                    className="outline-none placeholder:ps-3 ps-3 py-3 placeholder:text-gray-300 placeholder:text-[18px] placeholder:font-medium"
+                                    placeholder="Search here"
+                                />
+                                <span className="h-12 w-12 rounded-r-md bg-[#393D46] flex justify-center items-center">
+                                    <BiSearch size={25} color={"white"} />
+                                </span>
+                            </div>
+                        </div>
+                        {/* cart and login */}
+                        <div className="flex flex-row gap-x-3 items-center justify-between">
+                            <MdOutlineShoppingCart size={25} color={"black"} />
+                            <GoHeart size={25} color={"black"} />
+                            <Text
+                                size="txtPoppinsBold24"
+                                className="cursor-pointer font-bold leading-[normal] text-center text-sm px-3"
+                            >
+                                Login
+                            </Text>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-center justify-center mt-5 ">
+                        <Line className="bg-gray-200 h-px w-full" />
+                    </div>
+                    {/* nav items */}
+                    <div className="flex flex-row md:gap-10 gap-20 items-center justify-center mt-[25px] w-full">
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Categories
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            New Arrival
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Features
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Collections
+                        </Text>
+                        <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            Discount
+                        </Text>
+                    </div>
+                </div>
+                {/* <div className="flex flex-row items-center justify-between h-full sm:px-16 px-6">
                     <div className="header-row my-px">
                         <div className="flex flex-row gap-[11px] justify-start">
                             <Img className="" src="LogoImage.svg" alt="home" width={40} height={40} />
@@ -27,13 +92,16 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         <div className="flex flex-row gap-10 font-[500] ">
                             <div className="flex flex-row  items-start justify-start ">
                                 <Text className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
-                                    Home
+                                   xxx
                                 </Text>
                                 <IoIosArrowDown size={22} className="pt-1" />
                             </div>
-                            <div className="flex flex-row  items-start justify-start ">
-                                <Text className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
-                                    Listing
+                            <div
+                           
+                            className="flex flex-row  items-start justify-start">
+                                <Text
+                                 className="text-base pe-1 text-gray-900 w-auto" size="txtPoppinsMedium16">
+                                    List
                                 </Text>
                                 <IoIosArrowDown size={22} className="pt-1" />
                             </div>
@@ -59,14 +127,21 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         >
                             <div className="font-semibold font-poppins ps-3 text-gray-900 text-left text-lg">Search</div>
                         </Button>
-                        <Button
-                            onClick={() => router.push("/auth")}
+                       { user.fullName?<Button
+              
                             className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white"
                         >
-                            Log in
+                            Log out
                         </Button>
+                        :
+                        <Button
+                        onClick={() => router.push("/auth")}
+                            className="bg-slate-700 cursor-pointer font-poppins font-semibold py-3 shadow-md px-7 rounded-md text-base text-center text-white"
+                        >
+                           Log in
+                        </Button>}
                     </div>
-                </div>
+                </div> */}
             </header>
         </>
     );

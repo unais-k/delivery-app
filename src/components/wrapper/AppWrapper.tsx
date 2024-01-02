@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "../navbar";
+import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { Provider } from "react-redux";
 import { store,persistor } from "./../../lib/store";
@@ -21,7 +21,8 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
         >
             <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <ToastContainer />
+                    <ToastContainer />
+                    <Navbar/>
               
                 <main>{children} </main>
                 

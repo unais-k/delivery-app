@@ -8,12 +8,7 @@ type OTPProps = {
     onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
 };
 
-const OTPForm: React.FC<OTPProps> = ({
-    otp,
-
-    setOtp,
-    onFormSubmit,
-}) => {
+const OTPForm: React.FC<OTPProps> = ({ otp, setOtp, onFormSubmit }) => {
     const inputRefs = Array.from({ length: 6 }, () => useRef<HTMLInputElement>(null));
     const isInitialRender = useRef(true);
 

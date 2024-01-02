@@ -17,3 +17,8 @@
     background-color: black;
     border: 1px thin gray;
 }
+
+.btn {
+    @apply text-[17px] text-[#000000] uppercase relative transition-[0.5s] duration-[ease] cursor-pointer px-[1.5em] py-[1em] border-[none] before:content-[""] before:absolute before:h-0.5 before:w-0 before:bg-[#000000] before:transition-[0.2s] before:duration-[ease] before:left-0 before:bottom-0 hover:text-[#1e1e2b] hover:delay-[0.2s] hover:before:w-full after:content-[""] after:absolute after:h-0 after:w-full after:bg-[#BBBFCA] after:transition-[0.2s] after:duration-[ease] after:z-[-1] after:left-0 after:bottom-0 hover:after:h-full hover:after:delay-[0.2s] hover:after:text-[aliceblue];
+    background: transparent;
+  }
