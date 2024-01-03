@@ -13,6 +13,7 @@ import { PagerIndicator } from "@/components/modules/ui/PageIndiactor";
 import { RatingBar } from "@/components/modules/ui/RatingBar";
 import { useRouter } from "next/router";
 import Footer1 from "@/components/Footer";
+import Header from "@/components/Header";
 
 const HomepageVTwoPage: React.FC = () => {
     const router = useRouter();
@@ -22,64 +23,8 @@ const HomepageVTwoPage: React.FC = () => {
 
     return (
         <>
-            <div className="common-pointer bg-white-A700 flex flex-col font-poppins items-center justify-start mx-auto w-full">
-                <header className="flex items-center justify-center md:px-5 w-full">
-                    <div className="bg-white-A700 flex flex-col items-center justify-center p-6 sm:px-5 w-full">
-                        <div className="flex flex-col items-center justify-center w-[88%] md:w-full">
-                            <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start w-full">
-                                <div className="flex md:flex-1 flex-row gap-2 items-center justify-start w-[7%] md:w-full">
-                                    <Img className="h-6 w-[35%]" src="images/img_volume.svg" alt="volume" />
-                                    <Text
-                                        className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                        size="txtPoppinsBold24"
-                                    >
-                                        Elliye{" "}
-                                    </Text>
-                                </div>
-                                <div className="bg-white-A700 border-2 border-gray-50 border-solid flex md:flex-1 flex-row sm:gap-10 items-center justify-between mb-[5px] md:ml-[0] ml-[411px] sm:pl-5 pl-8 w-[36%] md:w-full">
-                                    <Text className="text-gray-500_87 text-lg" size="txtPoppinsRegular18Gray50087">
-                                        Search here
-                                    </Text>
-                                    <div className="bg-gray-800 h-12 md:h-[18px] p-4 relative w-12">
-                                        <Img
-                                            className="absolute h-[18px] inset-[0] justify-center m-auto w-[18px]"
-                                            src="images/img_search.svg"
-                                            alt="search"
-                                        />
-                                    </div>
-                                </div>
-                                <Img className="h-6 md:ml-[0] ml-[304px] w-20" src="images/img_car_24X80.svg" alt="car" />
-                                <Button
-                                    className="cursor-pointer font-bold leading-[normal] ml-8 md:ml-[0] text-center text-sm w-[107px]"
-                                    shape="square"
-                                    color="gray_800"
-                                    size="lg"
-                                    variant="fill"
-                                >
-                                    Login
-                                </Button>
-                            </div>
-                            <Line className="bg-gray-50 h-px mt-[19px] w-full" />
-                            <div className="flex md:flex-col flex-row md:gap-10 gap-20 items-start justify-start mt-[27px] w-auto md:w-full">
-                                <Text className="text-gray-800 text-lg w-auto" size="txtPoppinsRegular18">
-                                    Categories
-                                </Text>
-                                <Text className="text-gray-800 text-lg w-auto" size="txtPoppinsRegular18">
-                                    New Arrival
-                                </Text>
-                                <Text className="text-gray-800 text-lg w-auto" size="txtPoppinsRegular18">
-                                    Features
-                                </Text>
-                                <Text className="text-gray-800 text-lg w-auto" size="txtPoppinsRegular18">
-                                    Collections
-                                </Text>
-                                <Text className="text-gray-800 text-lg w-auto" size="txtPoppinsRegular18">
-                                    Discount
-                                </Text>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+          
+             
                 <div className="flex flex-col items-center justify-start w-full">
                     <div className="overflow-auto overflow-x-auto w-full">
                         <div className="h-[750px] sm:h-[950px] md:px-5 relative w-full">
@@ -1015,7 +960,7 @@ const HomepageVTwoPage: React.FC = () => {
                     </List>
                     <Footer1 className="bg-gray-800 flex items-center justify-center md:px-5 w-full" />
                 </div>
-            </div>
+          
         </>
     );
 };
