@@ -3,6 +3,7 @@ import { Img } from "@/components/modules/ui/Image";
 import { Text } from "@/components/modules/ui/Text";
 import { footerLinks } from "@/constants/appConstants";
 import Accordion from "./modules/ui/Accordion";
+import { Input } from "./modules/ui/Input";
 
 
 
@@ -15,11 +16,11 @@ type FooterProps = React.DetailedHTMLProps<
 const Footer: React.FC<FooterProps> = (props) => {
   return (
     <>
-      <footer className={props.className}>
+      <footer className="bg-gray-800 flex items-center justify-center md:px-5 w-full">
         <div className="flex flex-col md:gap-10 gap-[100px] items-center justify-center mb-8 mt-16 mx-auto w-[85%]">
-          <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
-            <div className="flex md:flex-1 flex-col items-start justify-start pr-1.5 pt-1.5 w-[43%] md:w-full">
-              <div className="flex flex-row gap-2 items-start justify-start w-[17%] md:w-full">
+          <div className="flex flex-col md:flex-row md:gap-5 items-start justify-evenly w-full">
+            <div className="flex flex-col items-start justify-start pr-1.5 pt-1.5 md:w-[33%] w-full">
+              <div className="flex flex-row gap-2 items-start justify-start w-fit">
                 <Img
                   className="h-6 w-[35%]"
                   src="images/img_group19.svg"
@@ -29,11 +30,11 @@ const Footer: React.FC<FooterProps> = (props) => {
                   className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
                 >
-                  Elliye{" "}
+                  Elliye
                 </Text>
               </div>
               <Text
-                className="leading-[32.00px] mt-[43px] text-gray-500 text-lg w-[53%] sm:w-full"
+                className="leading-[32.00px] mt-[43px] text-gray-500 text-lg w-[83%]"
                 size="txtPoppinsRegular18Gray500"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -68,8 +69,8 @@ const Footer: React.FC<FooterProps> = (props) => {
                 </div>
               </div>
             </div>
-            <div className="flex md:flex-1 md:flex-col flex-row md:gap-5 items-start justify-evenly w-[58%] md:w-full">
-              <div className="flex flex-col gap-[45px] items-start justify-start pr-1 py-1 w-[30%] md:w-full">
+            <div className="flex flex-col md:flex-row md:gap-5 items-start justify-evenly md:mt-0 mt-10 w-full">
+              <div className="flex flex-col gap-[45px] items-start justify-start pr-1 py-1 w-[70%] md:w-full">
                 <Text
                   className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
@@ -96,14 +97,14 @@ const Footer: React.FC<FooterProps> = (props) => {
                     Features
                   </Text>
                   <Text
-                    className="mt-6 text-gray-500 text-lg"
+                    className="mt-6 mb-10 text-gray-500 text-lg"
                     size="txtPoppinsRegular18Gray500"
                   >
                     Collections
                   </Text>
                 </div>
               </div>
-              <div className="flex flex-col gap-[39px] items-start justify-end pr-1 py-1 w-[30%] md:w-full">
+              <div className="flex flex-col gap-[39px] items-start justify-end pr-1 py-1 w-[70%] md:w-full">
                 <Text
                   className="mt-[3px] text-2xl md:text-[22px] text-white-A700 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
@@ -142,14 +143,14 @@ const Footer: React.FC<FooterProps> = (props) => {
                     Privacy Policy
                   </Text>
                   <Text
-                    className="mt-3.5 text-gray-500 text-lg"
+                    className="mt-3.5 mb-10 text-gray-500 text-lg"
                     size="txtPoppinsRegular18Gray500"
                   >
                     Terms of service
                   </Text>
                 </div>
               </div>
-              <div className="flex flex-col items-start justify-start md:mt-0 mt-1 w-[41%] md:w-full">
+              <div className="flex flex-col items-start justify-start md:mt-0 mt-1 w-[70%] md:w-full">
                 <Text
                   className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
@@ -164,12 +165,13 @@ const Footer: React.FC<FooterProps> = (props) => {
                   more!
                 </Text>
                 <div className="bg-gray-800 border border-solid border-white-A700 flex flex-row items-center justify-between mt-[35px] sm:pl-5 pl-6 w-full">
-                  <Text
-                    className="text-bluegray-100_87 text-lg tracking-[0.36px]"
-                    size="txtPoppinsRegular18Bluegray10087"
-                  >
-                    Enter your email
-                  </Text>
+                  <Input
+                    type="text"
+                    className="text-bluegray-100_87 text-lg font-normal font-poppins tracking-[0.36px]"
+                    placeholder="Enter your email"
+                  />
+                 
+                 
                   <div className="bg-white-A700 md:h-[31px] h-[60px] p-3.5 relative w-[60px]">
                     <Img
                       className="absolute h-[31px] inset-[0] justify-center m-auto w-8"
@@ -185,7 +187,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             className="text-bluegray-100 text-sm"
             size="txtPoppinsRegular14Bluegray100"
           >
-            Copyright © 2021 Elliye. All Right Reseved
+            Copyright © 2024 Elliye. All Right Reseved
           </Text>
         </div>
       </footer>
