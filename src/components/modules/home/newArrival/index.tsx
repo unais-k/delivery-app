@@ -1,7 +1,7 @@
 import { Img } from "@/components/modules/ui/Image";
 import { Text } from "@/components/modules/ui/Text";
 import { popularProductType } from "@/types/popularProductType";
-import NewArrivalCard from "../common/newArrivalCard";
+import NewArrivalCard from "../../common/newArrivalCard";
 
 const demiProductData: popularProductType[] = [
     {
