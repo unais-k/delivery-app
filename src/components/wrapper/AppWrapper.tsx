@@ -24,7 +24,8 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
                     <ToastContainer />
                     <Navbar/>
               
-                <main>{children} </main>
+                    <main>{children} </main>
+                    <Footer/>
                 
                 </PersistGate>
             </Provider>
