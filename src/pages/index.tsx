@@ -1,22 +1,15 @@
-import CustomerService from "@/components/modules/home/CustomerService";
-import LandingSection from "@/components/modules/home/LandingSection";
 import React from "react";
 import { Button } from "@/components/modules/ui/Button";
-import { FeatureCardPropList } from "@/constants/appConstants";
-import FeatureCard from "@/components/modules/FeatureCard";
 import { Text } from "@/components/modules/ui/Text";
 import { Img } from "@/components/modules/ui/Image";
-import { List } from "@/components/modules/ui/List";
-import { Line } from "@/components/modules/ui/Line";
 import { Slider } from "@/components/modules/ui/Slider";
 import { PagerIndicator } from "@/components/modules/ui/PageIndiactor";
-import { RatingBar } from "@/components/modules/ui/RatingBar";
 import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Testimonial from "@/components/modules/Testimonial";
-import NewArrival from "@/components/modules/newArrival";
-import PopularThisWeek from "@/components/modules/popularThisWeek";
+import Testimonial from "@/components/modules/home/Testimonial";
+import NewArrival from "@/components/modules/home/newArrival";
+import PopularThisWeek from "@/components/modules/home/popularThisWeek";
+import LimitedOffer from "@/components/modules/home/limitedOffer";
 
 const HomepageVTwoPage: React.FC = () => {
     const router = useRouter();
@@ -437,201 +430,7 @@ const HomepageVTwoPage: React.FC = () => {
                     </div>
                 </div>
                 {/* limited offer */}
-                <div className="md:h-[1628px] sm:h-[535px] h-[579px] mt-[100px] md:px-5 relative w-full">
-                    <div className="absolute bg-gray-800 flex flex-col inset-x-[0] items-start justify-start mx-auto p-[52px] md:px-10 sm:px-5 top-[0] w-full">
-                        <div className="flex flex-col items-center justify-start mb-[271px] md:ml-[0] ml-[91px]">
-                            <Text
-                                className="text-4xl sm:text-[32px] md:text-[34px] text-white-A700"
-                                size="txtPoppinsBold36WhiteA700"
-                            >
-                                Limited Offer
-                            </Text>
-                        </div>
-                    </div>
-                    <List
-                        className="absolute bottom-[0] sm:flex-col flex-row gap-8 grid md:grid-cols-1 grid-cols-2 inset-x-[0] justify-center mx-auto w-[85%]"
-                        orientation="horizontal"
-                    >
-                        <div className="bg-gray-50 flex md:flex-col flex-row gap-12 items-center justify-start sm:ml-[0] p-8 sm:px-5 shadow-bs1 w-full">
-                            <div className="flex md:flex-1 flex-col gap-8 items-center justify-start w-[38%] md:w-full">
-                                <Img
-                                    className="h-[279px] md:h-auto object-cover w-[279px]"
-                                    src="images/img_rectangle45.png"
-                                    alt="RectangleFortyFive"
-                                />
-                                <Button
-                                    className="cursor-pointer font-bold h-[60px] leading-[normal] text-center text-lg w-[200px]"
-                                    shape="square"
-                                    color="gray_800"
-                                    size="xl"
-                                    variant="fill"
-                                >
-                                    Add to Cart
-                                </Button>
-                            </div>
-                            <div className="flex md:flex-1 flex-col items-center justify-start w-[53%] md:w-full">
-                                <div className="flex flex-col items-start justify-start w-full">
-                                    <Text
-                                        className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                        size="txtPoppinsRegular24"
-                                    >
-                                        Limited Deals
-                                    </Text>
-                                    <div className="flex flex-row gap-8 items-center justify-between mt-[31px] w-full">
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-end p-[22px] sm:px-5 w-[107px]">
-                                            <div className="flex flex-col gap-[19px] items-center justify-start">
-                                                <Text
-                                                    className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    08
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Hours
-                                                </Text>
-                                            </div>
-                                        </div>
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-start p-[18px] w-[107px]">
-                                            <div className="flex flex-col gap-[18px] items-center justify-start my-1">
-                                                <Text
-                                                    className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    58
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Minutes
-                                                </Text>
-                                            </div>
-                                        </div>
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-start p-3.5 w-[107px]">
-                                            <div className="flex flex-col gap-[19px] items-center justify-start my-2">
-                                                <Text
-                                                    className="h-6 text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    18
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Seconds
-                                                </Text>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Text
-                                        className="mt-[29px] text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                        size="txtPoppinsBold24"
-                                    >
-                                        Black Warm Jacket{" "}
-                                    </Text>
-                                    <div className="flex flex-row gap-6 items-center justify-start mt-[22px] w-[36%] md:w-full">
-                                        <Text
-                                            className="line-through text-2xl md:text-[22px] text-gray-500 sm:text-xl"
-                                            size="txtPoppinsRegular24Gray500"
-                                        >
-                                            $299
-                                        </Text>
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            $199
-                                        </Text>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-gray-50 flex md:flex-col flex-row gap-12 items-center justify-start sm:ml-[0] p-8 sm:px-5 shadow-bs1 w-full">
-                            <div className="flex md:flex-1 flex-col gap-8 items-center justify-start w-[38%] md:w-full">
-                                <Img
-                                    className="h-[279px] md:h-auto object-cover w-[279px]"
-                                    src="images/img_placeholder_4.png"
-                                    alt="RectangleFortyFive One"
-                                />
-                                <Button
-                                    className="cursor-pointer font-bold h-[60px] leading-[normal] text-center text-lg w-[200px]"
-                                    shape="square"
-                                    color="gray_800"
-                                    size="xl"
-                                    variant="fill"
-                                >
-                                    Add to Cart
-                                </Button>
-                            </div>
-                            <div className="flex md:flex-1 flex-col items-center justify-start w-[53%] md:w-full">
-                                <div className="flex flex-col items-start justify-start w-full">
-                                    <Text
-                                        className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                        size="txtPoppinsRegular24"
-                                    >
-                                        Limited Deals
-                                    </Text>
-                                    <div className="flex flex-row gap-8 items-center justify-between mt-[31px] w-full">
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-end p-[22px] sm:px-5 w-[107px]">
-                                            <div className="flex flex-col gap-[19px] items-center justify-start">
-                                                <Text
-                                                    className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    08
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Hours
-                                                </Text>
-                                            </div>
-                                        </div>
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-start p-[18px] w-[107px]">
-                                            <div className="flex flex-col gap-[18px] items-center justify-start my-1">
-                                                <Text
-                                                    className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    58
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Minutes
-                                                </Text>
-                                            </div>
-                                        </div>
-                                        <div className="border border-gray-500 border-solid flex flex-col h-[107px] items-center justify-start p-3.5 w-[107px]">
-                                            <div className="flex flex-col gap-[19px] items-center justify-start my-2">
-                                                <Text
-                                                    className="h-6 text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                                    size="txtPoppinsMedium24"
-                                                >
-                                                    18
-                                                </Text>
-                                                <Text className="text-gray-800 text-lg" size="txtPoppinsRegular18">
-                                                    Seconds
-                                                </Text>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Text
-                                        className="mt-8 text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                        size="txtPoppinsBold24"
-                                    >
-                                        Casual Grey Shoes
-                                    </Text>
-                                    <div className="flex flex-row gap-[23px] items-center justify-start mt-4 w-[36%] md:w-full">
-                                        <Text
-                                            className="line-through text-2xl md:text-[22px] text-gray-500 sm:text-xl"
-                                            size="txtPoppinsRegular24Gray500"
-                                        >
-                                            $399
-                                        </Text>
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            $199
-                                        </Text>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </List>
-                </div>
+                <LimitedOffer/>
                 <div className="flex flex-col lg:flex-row gap-[30px] items-center justify-start max-w-[90%] mt-[100px] mx-auto pt-[7px] md:px-5 w-full">
                     <NewArrival/>
                     <PopularThisWeek/>

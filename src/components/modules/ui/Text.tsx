@@ -37,7 +37,7 @@ const sizeClasses = {
 
 export type TextProps = Partial<{
   className: string;
-  size: keyof typeof sizeClasses;
+  size?: keyof typeof sizeClasses;
   as: any;
 }> &
   React.DetailedHTMLProps<

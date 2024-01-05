@@ -33,7 +33,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                     <div className="flex flex-col gap-[27px] items-start justify-start w-full">
                         <div className="flex flex-row gap-3 items-center justify-start w-full">
                             <Img height={500} width={500} className="h-6 w-6" src="images/img_eye.svg" alt="eye" />
-                            <Text className="flex-1 text-base text-gray-900 w-auto" size="txtPoppinsSemiBold16">
+                            <Text className="flex-1 text-base text-gray-900 w-auto" 
+                            // size="txtPoppinsSemiBold16"
+                            >
                                 {props?.p286162ndaveoaklone}
                             </Text>
                         </div>
@@ -49,7 +51,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                                     />
                                     <Text
                                         className="flex-1 text-base text-gray-700 w-auto"
-                                        size="txtPoppinsSemiBold16Gray700"
+                                        
+                                        // size="txtPoppinsSemiBold16Gray700"
+
                                     >
                                         {props?.p3bedroom}
                                     </Text>
@@ -62,7 +66,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                                         src="images/img_ticket.svg"
                                         alt="ticket"
                                     />
-                                    <Text className="text-base text-gray-700 w-auto" size="txtPoppinsSemiBold16Gray700">
+                                    <Text className="text-base text-gray-700 w-auto" 
+                                    // size="txtPoppinsSemiBold16Gray700"
+                                    >
                                         {props?.bathcounter}
                                     </Text>
                                 </div>
@@ -78,7 +84,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                                     />
                                     <Text
                                         className="flex-1 text-base text-gray-700 w-auto"
-                                        size="txtPoppinsSemiBold16Gray700"
+                                        
+                                        // size="txtPoppinsSemiBold16Gray700"
+
                                     >
                                         {props?.sqftcounter}
                                     </Text>
@@ -91,7 +99,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                                         src="images/img_settings.svg"
                                         alt="settings"
                                     />
-                                    <Text className="text-base text-gray-700 w-auto" size="txtPoppinsSemiBold16Gray700">
+                                    <Text className="text-base text-gray-700 w-auto" 
+                                    // size="txtPoppinsSemiBold16Gray700"
+                                    >
                                         {props?.p1bath}
                                     </Text>
                                 </div>
@@ -103,7 +113,9 @@ const FeatureCard: React.FC<LandingPageCardProps> = (props) => {
                             </Button>
                             <Text
                                 className="flex-1 text-2xl md:text-[22px] text-gray-900 sm:text-xl tracking-[-0.48px] w-auto"
-                                size="txtPoppinsBold24Gray900"
+                                
+                                // size="txtPoppinsBold24Gray900"
+
                             >
                                 {props?.price}
                             </Text>
