@@ -13,3 +13,12 @@ export interface limitedOfferProductType {
     price: string;
     offerPrice:string
 }
+
+export interface ProductType {
+    _id: string;
+    title: string;
+    images: string[];
+    price: number;
+    category:string
+    properties:string|null
+  }
