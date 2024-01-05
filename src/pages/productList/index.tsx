@@ -9,15 +9,12 @@ import Footer from "@/components/Footer";
 import { Line } from "@/components/modules/ui/Line";
 import connectDB from "@/lib/mongooseConnect";
 import { Product } from "@/model/productSchema";
+import Link from 'next/link';
+import {ProductType} from '../../types/popularProductType';
 
-interface Product {
-  _id: string;
-  title: string;
-  images: string[];
-  price: number;
-}
 
-type Products = Product[];
+
+type Products =ProductType[];
 
 interface ProductListProps {
   products: Products;
@@ -333,8 +330,9 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
               <div className="common-pointer flex flex-col gap-14 items-center justify-start w-full">
                 <div className="flex flex-col items-center justify-start w-full">
                   <div className="md:gap-5 gap-8 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center min-h-[auto] w-full">
-                    {products.map((item: Product) => {
+                    {products.map((item:ProductType) => {
                       return (
+                        <Link className="btn-default" href={'/productList/productDetails/'+item._id}>
                         <div
                           key={item._id}
                           className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
@@ -362,6 +360,7 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
                             </Text>
                           </div>
                         </div>
+                        </Link>
                       );
                     })}
                   </div>
@@ -421,7 +420,7 @@ export async function getServerSideProps() {
   try {
     await connectDB();
 
-    const products: Products = await Product.find().lean();
+    const products: Products = await Product.find().lean()||[];
 
     return {
       props: {
