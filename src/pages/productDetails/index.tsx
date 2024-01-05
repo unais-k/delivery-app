@@ -27,17 +27,17 @@ const ProductDetailsPage: React.FC = () => {
               />
               <div className="flex sm:flex-row flex-col  gap-8 items-center justify-center w-[61%] flex-nowrap">
                 <Img
-                  className="h-[137px] md:h-auto object-cover w-[29%] sm:w-full"
+                  className="h-[137px] md:h-auto object-cover w-[29%] "
                   src="images/img_placeholder_245X245.png"
                   alt="placeholder One"
                 />
                 <Img
-                  className="h-[137px] md:h-auto object-cover w-[29%] sm:w-full"
+                  className="h-[137px] md:h-auto object-cover w-[29%] "
                   src="images/img_placeholder_15.png"
                   alt="placeholder Two"
                 />
                 <Img
-                  className="h-[137px] md:h-auto object-cover w-[29%] sm:w-full"
+                  className="h-[137px] md:h-auto object-cover w-[29%]"
                   src="images/img_placeholder_5.png"
                   alt="placeholder Three"
                 />
