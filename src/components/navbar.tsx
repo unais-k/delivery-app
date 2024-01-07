@@ -12,6 +12,7 @@ import { Line } from "@/components/modules/ui/Line";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoHeart } from "react-icons/go";
+import Link from "next/link";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
@@ -72,7 +73,9 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                             Features
                         </Text>
                         <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
+                            <Link  href={"/productList"}>
                             Collections
+                            </Link>
                         </Text>
                         <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
                             Discount

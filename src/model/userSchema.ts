@@ -56,11 +56,11 @@ const UserSchema: Schema = new Schema(
             },
         ],
         cart: [
+          
             {
                 product: {
-                    name: { type: String },
-                    banner: { type: String },
-                    price: { type: Number },
+                    type: Schema.Types.ObjectId,
+                    ref: "Product",
                 },
                 unit: { type: Number, required: true },
             },
