@@ -289,7 +289,7 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
                             </div>
                         </div>
                     </div>
-                    <Footer className="bg-gray-800 flex items-center justify-center mt-[100px] md:px-5 w-full" />
+                   
                 </div>
             </div>
         </>
