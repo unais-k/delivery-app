@@ -1,6 +1,10 @@
 import { ProductType } from "@/types/popularProductType";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { selectUser } from '../slices/userSlice';
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { RootState,persistor} from "../store";
+import { getStoredState } from "redux-persist";
 
 type cartType = {
   cartItem: ProductType[];
@@ -11,11 +15,15 @@ const initialState = {
 } as cartType;
 
 
+
 export const addToCart = createAsyncThunk("cart/addToCart", async (payload: ProductType) => {
+
+  
   try {
     await axios.post('/api/cart', {
       action: 'add',
       product: payload,
+      
     });
 
     return payload; // Return the payload if successful
