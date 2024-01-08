@@ -11,7 +11,6 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
     const router = useRouter();
 
     const isNavbarAllowed = router.pathname != "/auth";
-    const isOTP = router.pathname != "/auth/otp";
 
     return (
         <div
@@ -22,14 +21,15 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
             <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                     <ToastContainer />
+            {/* {isNavbarAllowed && <Navbar />} */}
                     <Navbar/>
               
                     <main>{children} </main>
-                    <Footer/>
+                    {/* <Footer/> */}
                 
+            {isNavbarAllowed && <Footer />}
                 </PersistGate>
             </Provider>
-            {/* {isNavbarAllowed && <Footer />} */}
         </div>
     );
 }

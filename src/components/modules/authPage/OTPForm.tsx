@@ -74,7 +74,7 @@ const OTPForm: React.FC<OTPProps> = ({ otp, setOtp, onFormSubmit }) => {
         <form onSubmit={onFormSubmit}>
             <div className="items-stretch bg-white flex flex-col justify-center px-4 py-5  mt-3">
                 <div className="items-center flex justify-between">
-                    {otp.map((digit, index) => (
+                    {otp?.map((digit, index) => (
                         <input
                             key={index}
                             type="text"
@@ -93,13 +93,13 @@ const OTPForm: React.FC<OTPProps> = ({ otp, setOtp, onFormSubmit }) => {
             <div className="flex justify-between items-center">
                 <button
                     type="submit"
-                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
+                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch border boder-solid mt-4 px-6 py-3 rounded-xl max-md:px-5"
                 >
                     Verify
                 </button>
                 <button
                     type="button"
-                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-3 rounded-xl max-md:px-5"
+                    className="text-white text-center text-lg font-semibold leading-5 justify-center items-stretch border boder-solid mt-4 px-6 py-3 rounded-xl max-md:px-5"
                 >
                     Resend OTP
                 </button>

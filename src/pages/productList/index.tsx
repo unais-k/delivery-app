@@ -303,7 +303,7 @@ export async function getServerSideProps() {
 
         await connectDB();
 
-        const products: Products = (await Product.find().lean()) || [];
+        const products: Products = (await Product.find()) || [];
 
         return {
             props: {

@@ -31,6 +31,8 @@ const config: Config = {
                 poppins: ["Poppins", "sans-serif"],
                 montserrat: ["Montserrat", "sans-serif"],
                 urbanist: ["Urbanist", "sans-serif"],
+                raleway:['Raleway', "sans-serif"],
+                pathway:['Pathway Gothic One', "sans-serif"]
             },
         },
     },

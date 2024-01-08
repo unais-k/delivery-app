@@ -74,7 +74,7 @@ const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPh
                 {/* <SubmitButton label="Log in" onSubmit={onFormSubmit} /> */}
                 {buttonSubmit ? (
                     <div className="sm:px-4 px-0">
-                        <div className="flex gap-1 text-white text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-5 rounded-xl max-md:px-5">
+                        <div className="flex gap-1 text-white text-center text-lg font-bold leading-5 justify-center items-stretch border border-solid border-[#000] mt-4 px-6 py-5 rounded-xl max-md:px-5">
                             <Image
                                 width={20}
                                 height={20}
@@ -90,7 +90,7 @@ const SignInForm: React.FC<SignInProps> = ({ password, phone, setPassword, setPh
                     <div className="sm:px-4 px-0">
                         <button
                             type="submit"
-                            className="text-white w-full text-center text-lg font-bold leading-5 justify-center items-stretch bg-zinc-900 mt-4 px-6 py-5 rounded-xl max-md:px-5"
+                            className="text-white w-full text-center text-lg font-bold leading-5 justify-center items-stretch border border-solid border-[#000] mt-4 px-6 py-5 rounded-xl max-md:px-5"
                         >
                             Log in
                         </button>
