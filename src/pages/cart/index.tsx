@@ -9,9 +9,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Cart: React.FC = () => {
-    const cart = useSelector((state: any) => state.cart);
-    const totalAmount = cart?.cartItem?.reduce((acc: any, curr: any) => {
-        const itemTotal = curr?.quantity * curr?.price;
+    const cart = useSelector((state: any) => state.cart)
+    console.log(cart,3333333)
+    const totalAmount = cart?.cartItem?.cart?.reduce((acc: any, curr: any) => {
+        const itemTotal = curr?.unit*curr?.product?.price;
         return acc + itemTotal;
     }, 0);
     return (
@@ -62,7 +63,7 @@ const Cart: React.FC = () => {
                         <div className="flex flex-col gap-[31px] items-start sm:p-8 p-3 md:p-14 mb-10 lg:p-20 justify-start w-fit bg-[#F4F9F9]">
                             <Text className="text-start text-xl font-[500] font-urbanist uppercase">Cart Item</Text>
                             <List className="flex flex-col gap-[31px] items-center w-full" orientation="vertical">
-                                {cart?.cartItem?.map((item: any) => {
+                                {cart?.cartItem?.cart?.map((item: any) => {
                                     return <CartCard key={item._id} {...item} />;
                                 })}
                             </List>

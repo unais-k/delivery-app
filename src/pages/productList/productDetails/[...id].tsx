@@ -29,7 +29,7 @@ interface ProductDetailsProps {
 const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }) => {
 
 
-  console.log(useSelector(selectUser),222222222222)
+
 const userId=useSelector(selectUser)._id
     const dispatch = useDispatch();
     const handleAddToCart = () => {
