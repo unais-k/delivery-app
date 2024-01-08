@@ -18,6 +18,8 @@ import { FiMinus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/lib/slices/cartSlice";
 import { useSelector } from "react-redux";
+import { selectUser } from "@/lib/slices/userSlice";
+
 
 interface ProductDetailsProps {
     product: ProductType | null;
@@ -25,8 +27,13 @@ interface ProductDetailsProps {
 }
 
 const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }) => {
+
+
+  console.log(useSelector(selectUser),222222222222)
+const userId=useSelector(selectUser)._id
     const dispatch = useDispatch();
     const handleAddToCart = () => {
+      product.user=userId
         dispatch(addToCart(product));
     };
 
