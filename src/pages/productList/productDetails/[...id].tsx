@@ -17,27 +17,28 @@ import { ProductType } from "../../../types/popularProductType";
 import { FiMinus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/lib/slices/cartSlice";
+import {addToWishlist} from '@/lib/slices/wishListSlice'
 import { useSelector } from "react-redux";
 import { selectUser } from "@/lib/slices/userSlice";
-
+import { Dispatch } from "redux";
 
 interface ProductDetailsProps {
     product: ProductType | null;
     similarProducts: ProductType[];
 }
 
-const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }) => {
-
-
-
-const userId=useSelector(selectUser)._id
-    const dispatch = useDispatch();
+const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }:any) => {
+    const userId = useSelector(selectUser)._id
+    const dispatch:Dispatch<any> = useDispatch();
+    console.log(product,'product');
     const handleAddToCart = () => {
-      product.user=userId
+        product.user = userId;
         dispatch(addToCart(product));
     };
-
-    
+    const handleWishlist = () => {
+        product.user = userId
+        dispatch(addToWishlist(product))
+    }
 
     return (
         <>
@@ -46,7 +47,7 @@ const userId=useSelector(selectUser)._id
                     <div className="flex  flex-row gap-8 items-center justify-start max-w-[1632px] mx-auto md:px-5 w-full">
                         <div className="flex sm:flex-1 flex-col gap-8 items-center justify-start w-1/2 sm:w-full">
                             <Img
-                                className="h-[523px] md:h-auto object-cover w-full"
+                                className="h-auto object-cover w-[200px]"
                                 src={product?.images[0]}
                                 alt="placeholder"
                             />
@@ -137,6 +138,11 @@ const userId=useSelector(selectUser)._id
                                     Add to Cart
                                 </div>
                             </Button>
+                            <Button>
+                                <div onClick={handleWishlist} className="font-bold leading-[normal] text-left text-lg">
+                                    Add to wishlist
+                                </div>
+                            </Button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-8 items-center justify-start max-w-[1632px] mt-[183px] mx-auto md:px-5 w-full">
@@ -163,7 +169,7 @@ const userId=useSelector(selectUser)._id
                                 className="md:flex-1 sm:flex-row flex-col gap-8 grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full md:w-full"
                                 orientation="horizontal"
                             >
-                                {similarProducts?.map((item) => (
+                                {similarProducts?.map((item:any) => (
                                     <div
                                         key={item._id}
                                         className="flex flex-col gap-4 h-[500px] md:h-auto items-center justify-center sm:ml-[0] p-6 sm:px-5 w-96 sm:w-full"

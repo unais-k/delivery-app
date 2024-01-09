@@ -262,7 +262,7 @@ const HomepageVTwoPage: React.FC = () => {
                         </div>
                         <div className="flex md:flex-1 flex-col items-center justify-start w-[66%] md:w-full">
                             <div className="md:gap-5 gap-8 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center min-h-[auto] w-full">
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_10.png"
@@ -283,7 +283,7 @@ const HomepageVTwoPage: React.FC = () => {
                                         </Text>
                                     </div>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_11.png"
@@ -305,7 +305,7 @@ const HomepageVTwoPage: React.FC = () => {
                                         </Text>
                                     </div>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_175X225.png"
@@ -326,7 +326,7 @@ const HomepageVTwoPage: React.FC = () => {
                                         </Text>
                                     </div>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_13.png"
@@ -347,7 +347,7 @@ const HomepageVTwoPage: React.FC = () => {
                                         </Text>
                                     </div>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_12.png"
@@ -386,7 +386,7 @@ const HomepageVTwoPage: React.FC = () => {
                                         </Text>
                                     </div>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full">
+                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
                                         src="images/img_placeholder_9.png"
