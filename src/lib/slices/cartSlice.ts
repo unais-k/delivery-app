@@ -88,12 +88,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    removeItem: (state, action) => {
-      const removeItem = state.cartItem.filter(
-        (item) => item._id !== action.payload
-      );
-      state.cartItem = removeItem;
-    },
+    
   },
   extraReducers: (builder) => {
     builder
