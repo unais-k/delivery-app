@@ -5,13 +5,13 @@ import { Input } from "@/components/modules/ui/Input";
 import { Line } from "@/components/modules/ui/Line";
 import { List } from "@/components/modules/ui/List";
 import { Text } from "@/components/modules/ui/Text";
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const Cart: React.FC = () => {
     const cart = useSelector((state: any) => state.cart)
-    console.log(cart,3333333)
-    const totalAmount = cart?.cartItem?.cart?.reduce((acc: any, curr: any) => {
+    const totalAmount = cart?.cartItem?.reduce((acc: any, curr: any) => {
         const itemTotal = curr?.unit*curr?.product?.price;
         return acc + itemTotal;
     }, 0);
@@ -59,17 +59,17 @@ const Cart: React.FC = () => {
                 {/* progress bar end here */}
                 {/* table head */}
                 <div className="flex flex-col md:gap-10 gap-20 items-end justify-start max-w-[1632px] mt-20 mx-auto md:px-5 w-full h-full">
-                    <div className="flex flex-col md:flex-row items-center justify-start w-full relative">
+                    <div className="flex flex-1 flex-col lg:flex-row items-center justify-start w-full relative">
                         <div className="flex flex-col gap-[31px] items-start sm:p-8 p-3 md:p-14 mb-10 lg:p-20 justify-start w-fit bg-[#F4F9F9]">
                             <Text className="text-start text-xl font-[500] font-urbanist uppercase">Cart Item</Text>
                             <List className="flex flex-col gap-[31px] items-center w-full" orientation="vertical">
-                                {cart?.cartItem?.cart?.map((item: any) => {
+                                {cart?.cartItem?.map((item: any) => {
                                     return <CartCard key={item._id} {...item} />;
                                 })}
                             </List>
                         </div>
 
-                        <div className="flex flex-col md:gap-10 items-start justify-center p-5 w-fit right-0 top-0 h-fit absolute">
+                        <div className="flex flex-1 flex-col md:gap-10 items-start justify-center p-5 w-fit h-fit">
                             {/* <div className="absolute top-0 w-fit h-full"> */}
                             <div className="border border-bluegray-100 border-solid flex flex-row items-center justify-between pl-4 w-full">
                                 <Input
@@ -86,13 +86,17 @@ const Cart: React.FC = () => {
                                     ${totalAmount}
                                 </Text>
                             </div>
-                            <div className="flex flex-col sm:flex-row gap-8 items-center justify-end w-[26%] md:w-full mb-10">
+                            <div className="flex flex-col sm:flex-row gap-8 items-center justify-between w-full mb-10">
                                 <Button className="border border-gray-800 border-solid cursor-pointer font-medium h-12 leading-[normal] min-w-[207px] py-[13px] text-center text-gray-800 text-lg">
                                     Continue Shopping
                                 </Button>
+                                <Link href={"/cart/checkout"} >
                                 <Button className="bg-gray-800 cursor-pointer font-medium h-12 leading-[normal] py-[15px] text-center text-lg text-white-A700 w-[171px]">
                                     Checkout
                                 </Button>
+                                
+                                </Link>
+                              
                             </div>
                             
                         </div>

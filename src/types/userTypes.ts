@@ -7,6 +7,7 @@ interface Product {
     name: string;
     banner: string;
     price: number;
+    description?: string;
 }
 
 interface CartItem {
@@ -16,7 +17,7 @@ interface CartItem {
 
 interface WishlistItem {
     name: string;
-    description: string;
+    description?: string;
     banner: string;
     available: boolean;
     price: number;

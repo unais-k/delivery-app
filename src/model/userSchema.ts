@@ -18,11 +18,7 @@ interface CartItem {
 }
 
 interface WishlistItem {
-    name: string;
-    description: string;
-    banner: string;
-    available: boolean;
-    price: number;
+    product: Product;
 }
 
 interface Order {
@@ -56,7 +52,6 @@ const UserSchema: Schema = new Schema(
             },
         ],
         cart: [
-          
             {
                 product: {
                     type: Schema.Types.ObjectId,
@@ -67,11 +62,10 @@ const UserSchema: Schema = new Schema(
         ],
         wishlist: [
             {
-                name: { type: String },
-                description: { type: String },
-                banner: { type: String },
-                available: { type: Boolean },
-                price: { type: Number },
+                product: {
+                    type: Schema.Types.ObjectId,
+                    ref: "Product",
+                }
             },
         ],
         orders: [
