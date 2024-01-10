@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import SmallCartCard from "@/components/modules/cart/SmallCartCard";
 import CheckOutForm from "@/components/modules/checkOut/checkOutForm";
 import { Line } from "@/components/modules/ui/Line";
@@ -5,11 +6,23 @@ import { List } from "@/components/modules/ui/List";
 import { Text } from "@/components/modules/ui/Text";
 import Stripe from "@/components/stripe/Stripe";
 import { useSelector } from "react-redux";
+import axios from 'axios';
 
 
 const Checkout: React.FC = () => {
-  const cart = useSelector((state: any) => state.cart);
-  const cartDetails = cart?.cartItem?.reduce(
+
+    const [formData, setFormData] = useState({
+        fullName: '',
+        address: '',
+        streetName: '',
+        town: '',
+        state: '',
+        PINCode: '',
+        phone: '',
+        email: '',
+      });
+  const {cartItem} = useSelector((state: any) => state.cart);
+  const cartDetails = cartItem?.reduce(
     (acc: any, curr: any) => {
       const itemTotal = curr?.unit * curr?.product?.price;
 
@@ -22,6 +35,19 @@ const Checkout: React.FC = () => {
   );
   const totalAmount = cartDetails.totalAmount;
   const totalCount = cartDetails.totalCount;
+
+  const handleSubmit = async(e: React.FormEvent) => {
+    e.preventDefault();
+    await axios.post("/api/order",{
+        formData,
+        cartItem
+    }).then((res)=>{
+        if(res.data.url){
+            window.location=res.data.url
+        }
+    })
+    // You can dispatch an action or perform any other logic here
+  };
   return (
     <div className="flex flex-col items-start justify-start px-10 w-full">
       <div className="flex flex-row gap-4 items-start justify-start w-full">
@@ -75,7 +101,7 @@ const Checkout: React.FC = () => {
       <div className="mt-10 w-full h-full flex md:flex-row flex-col">
         <div className=" w-full h-full flex-col justify-start items-center">
           <div className="p-10">
-        <CheckOutForm/>
+        <CheckOutForm formData={formData} setFormData={setFormData}/>
       
 
           </div>
@@ -93,7 +119,7 @@ const Checkout: React.FC = () => {
                 className="flex flex-col gap-[31px] justify-start items-start w-full"
                 orientation="vertical"
               >
-                {cart?.cartItem?.map((item: any) => {
+                {cartItem?.map((item: any) => {
                   return <SmallCartCard key={item._id} {...item} />;
                 })}
               </List>
@@ -146,6 +172,9 @@ const Checkout: React.FC = () => {
               </div>
             </div>
           </div>
+          <button onClick={handleSubmit}>
+button
+          </button>
           <Stripe />
         </div>
       </div>

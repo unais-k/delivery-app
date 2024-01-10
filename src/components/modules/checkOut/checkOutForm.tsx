@@ -1,8 +1,42 @@
-import React from 'react'
+
+import React, { useState ,ChangeEvent, FormEvent, Dispatch, SetStateAction } from 'react';
+interface CheckOutFormProps {
+    formData: {
+      fullName: string;
+      address: string;
+      streetName: string;
+      town: string;
+      state: string;
+      PINCode: string;
+      phone: string;
+      email: string;
+    };
+    setFormData: Dispatch<SetStateAction<{
+      fullName: string;
+      address: string;
+      streetName: string;
+      town: string;
+      state: string;
+      PINCode: string;
+      phone: string;
+      email: string;
+    }>>;
+  }
+
+const CheckOutForm : React.FC<CheckOutFormProps>=({setFormData,formData}) => {
 
 
-const CheckOutForm : React.FC=() => {
+  
+    
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      };
 
+     
 
   return (
     <form className="flex flex-col justify-center item-center gap-3">
@@ -11,13 +45,15 @@ const CheckOutForm : React.FC=() => {
     </div>
     <div className="border-2 border-gray-300 px-3 pt-5">
       <div className="relative w-[80%]">
-        <input
-          autoComplete="off"
-          id="fullName"
-          name="fullName"
-          type="text"
-          className="peer h-8 w-full text-gray-900 focus:outline-none"
-        />
+      <input
+            autoComplete="off"
+            id="fullName"
+            name="fullName"
+            type="text"
+            value={formData.fullName}
+            onChange={handleChange}
+            className="peer h-8 w-full text-gray-900 focus:outline-none"
+          />
         <label
           htmlFor="fullName"
           className="absolute left-2 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
@@ -36,6 +72,8 @@ const CheckOutForm : React.FC=() => {
           id="address"
           name="address"
           type="text"
+          value={formData.address}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
@@ -52,6 +90,8 @@ const CheckOutForm : React.FC=() => {
           autoComplete="off"
           id="streetName"
           name="streetName"
+          value={formData.streetName}
+          onChange={handleChange}
           type="text"
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
@@ -70,6 +110,8 @@ const CheckOutForm : React.FC=() => {
           id="town"
           name="town"
           type="text"
+          value={formData.town}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
@@ -87,6 +129,8 @@ const CheckOutForm : React.FC=() => {
           id="state"
           name="state"
           type="text"
+          value={formData.state}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
@@ -104,6 +148,8 @@ const CheckOutForm : React.FC=() => {
           id="PINCode"
           name="PINCode"
           type="text"
+          value={formData.PINCode}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
@@ -124,6 +170,8 @@ const CheckOutForm : React.FC=() => {
           id="phone"
           name="phone"
           type="text"
+          value={formData.phone}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
@@ -141,6 +189,8 @@ const CheckOutForm : React.FC=() => {
           id="email"
           name="email"
           type="text"
+          value={formData.email}
+          onChange={handleChange}
           className="peer h-8 w-full text-gray-900 focus:outline-none"
         />
         <label
