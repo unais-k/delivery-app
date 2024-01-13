@@ -11,18 +11,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
             const { action, product } = req.body;
 
-            console.log(12121212,action)
             if (action === "add") {
-                const product_id = product._id;
-                console.log(product_id,product.user)
                 const objectId = new mongoose.Types.ObjectId(product.user);
-                console.log(objectId)
+
                 const user = await User.findOne({ _id: objectId });
+                const product_id = product._id;
+
 
                 if (user) {
                     const existingProduct = await User.findOne({
                         _id: objectId,
+
                         "cart.product":product_id,
+
                     });
 
                     if (existingProduct) {
@@ -43,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     res.status(404).json({ error: "User not found" });
                 }
             } else if (action === "increment") {
-                console.log(12121212)
+
                 const { userId, _id } = product;
                 updatedUser = await User.findOneAndUpdate(
                     { _id: userId, "cart.product": _id },

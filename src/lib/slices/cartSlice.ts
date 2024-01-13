@@ -67,23 +67,21 @@ export const removeItem = createAsyncThunk("cart/removeItem", async (payload: st
 });
 
 const cartSlice = createSlice({
-  name: "cart",
-  initialState,
-  reducers: {
-    removeItem: (state, action) => {
-      const removeItem = state.cartItem.filter(
-        (item) => item._id !== action.payload
-      );
-      state.cartItem = removeItem;
+    name: "cart",
+    initialState,
+    reducers: {
+        removeItem: (state, action) => {
+            const removeItem = state.cartItem.filter((item) => item._id !== action.payload);
+            state.cartItem = removeItem;
+        },
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(addToCart.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(addToCart.fulfilled, (state, action) => {
-        state.loading = false;
+    extraReducers: (builder) => {
+        builder
+            .addCase(addToCart.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(addToCart.fulfilled, (state, action) => {
+                state.loading = false;
 
                 state.cartItem = action.payload;
             })
