@@ -37,7 +37,7 @@ const NewArrival: any = () => {
                 New Arrival
             </Text>
             <div className="flex flex-col items-center justify-start mt-[42px] w-full">
-                <div className="md:gap-5 gap-[34px] grid md:grid-cols-2 grid-cols-1 justify-center min-h-[auto] w-full">
+                <div className="md:gap-5 gap-[34px] grid md:grid-cols-4 grid-cols-1 justify-center min-h-[auto] w-full">
                     {demiProductData?.map((item) => {
                         return (
                             <NewArrivalCard

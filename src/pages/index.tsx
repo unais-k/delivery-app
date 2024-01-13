@@ -21,8 +21,8 @@ const HomepageVTwoPage: React.FC = () => {
         <>
             <div className="flex flex-col items-center justify-start w-full">
                 <div className="overflow-auto overflow-x-auto w-full">
-                    <div className="h-[750px] sm:h-[950px] md:px-5 relative w-full">
-                        <div className="h-[750px] m-auto w-full ">
+                    <div className="h-[950px] md:h-[700px] md:px-5 relative w-full">
+                        <div className="h-[950px] md:h-[700px]  m-auto w-full ">
                             <Slider
                                 autoPlay
                                 autoPlayInterval={2000}
@@ -41,12 +41,12 @@ const HomepageVTwoPage: React.FC = () => {
                                 items={[
                                     <React.Fragment key={Math.random()}>
                                         <div
-                                            className="bg-cover bg-center bg-no-repeat flex flex-col h-[750px] items-center justify-start mx-2.5"
+                                            className="bg-cover bg-center bg-no-repeat flex flex-col h-[950px] md:h-[700px] items-center justify-start mx-2.5"
                                             style={{
                                                 backgroundImage: "url('images/img_group2291.png')",
                                             }}
                                         >
-                                            <div className="bg-black-900_68 flex flex-col items-start justify-end p-8 sm:px-5 w-full">
+                                            <div className="bg-black-900_68 flex flex-col items-start justify-end p- h-full  sm:px-5 w-full">
                                                 <div className="flex flex-col md:gap-10 gap-[148px] items-start justify-start ml-28 md:ml-[0] mt-[86px] w-[44%] md:w-full">
                                                     <div className="flex flex-col gap-[15px] items-start justify-start w-full">
                                                         <Text
@@ -115,7 +115,7 @@ const HomepageVTwoPage: React.FC = () => {
                                 unselectedWrapperCss="inline-block"
                             />
                         </div>
-                        <div className="absolute bottom-[4%]  gap-4 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-6 items-center justify-center right-[0] shadow-bs w-auto">
+                        <div className="absolute bottom-[4%]  gap-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-center justify-center right-[0] shadow-bs w-auto">
                             <div className="bg-white-A700 flex flex-col h-40 items-center justify-end p-[34px] sm:px-5 w-40">
                                 <div className="flex flex-col gap-4 items-center justify-start mt-1 w-auto">
                                     <Img className="h-[39px] w-[39px]" src="images/img_vector.svg" alt="Vector" />
@@ -167,66 +167,7 @@ const HomepageVTwoPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <Img className="h-[68px] mt-[115px] w-[969px]" src="images/img_vector_gray_500.svg" alt="Vector Three" />
-                <div className="flex md:flex-col flex-row gap-8 items-center justify-start max-w-[1633px] mt-[115px] mx-auto md:px-5 w-full">
-                    <div className="flex md:flex-1 flex-col gap-8 items-center justify-start w-[49%] md:w-full">
-                        <div
-                            className="bg-cover bg-no-repeat flex flex-col h-[400px] items-start justify-start p-[82px] md:px-10 sm:px-5 w-full"
-                            style={{ backgroundImage: "url('images/img_02.png')" }}
-                        >
-                            <Text
-                                className="my-[59px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700"
-                                size="txtPoppinsRegular36WhiteA700"
-                            >
-                                <span className="text-white-A700 font-poppins text-left font-normal">
-                                    <>
-                                        Casual
-                                        <br />
-                                    </>
-                                </span>
-                                <span className="md:text-[44px] sm:text-[38px] text-white-A700 font-playfairdisplay text-left text-5xl font-bold">
-                                    Collection
-                                </span>
-                            </Text>
-                        </div>
-                        <div
-                            className="bg-cover bg-no-repeat flex flex-col h-[400px] items-start justify-end p-[90px] md:px-10 sm:px-5 w-full"
-                            style={{ backgroundImage: "url('images/img_01.png')" }}
-                        >
-                            <Text
-                                className="mb-[47px] mt-[55px] text-4xl sm:text-[32px] md:text-[34px] text-gray-800"
-                                size="txtPoppinsRegular36"
-                            >
-                                <span className="text-gray-800 font-poppins text-left font-normal">
-                                    <>
-                                        Summer <br />
-                                    </>
-                                </span>
-                                <span className="md:text-[44px] sm:text-[38px] text-gray-800 font-playfairdisplay text-left text-5xl font-bold">
-                                    Collection
-                                </span>
-                            </Text>
-                        </div>
-                    </div>
-                    <div
-                        className="bg-cover bg-no-repeat flex flex-col h-[832px] items-start justify-start p-[79px] md:px-10 sm:px-5"
-                        style={{ backgroundImage: "url('images/img_03.png')" }}
-                    >
-                        <Text
-                            className="mb-[332px] mt-56 text-4xl sm:text-[32px] md:text-[34px] text-white-A700"
-                            size="txtPoppinsRegular36WhiteA700"
-                        >
-                            <span className="text-white-A700 font-poppins text-left font-normal">
-                                <>
-                                    Big Vibe <br />
-                                </>
-                            </span>
-                            <span className="md:text-[44px] sm:text-[38px] text-white-A700 font-playfairdisplay text-left text-5xl font-bold">
-                                Collection
-                            </span>
-                        </Text>
-                    </div>
-                </div>
+                
                 <div className="flex flex-col gap-10 items-center justify-start max-w-[1632px] mt-[100px] mx-auto pt-2 md:px-5 w-full">
                     <div className="flex flex-row md:gap-10 items-center justify-between w-full">
                         <Text className="text-4xl sm:text-[32px] md:text-[34px] text-gray-800" size="txtPoppinsBold36">
@@ -239,29 +180,10 @@ const HomepageVTwoPage: React.FC = () => {
                             <Img className="h-[31px] w-8" src="images/img_menu.svg" alt="menu" />
                         </div>
                     </div>
-                    <div className="flex md:flex-col flex-row gap-8 items-center justify-between w-full">
-                        <div className="flex md:flex-1 flex-col items-center justify-start pb-[7px] w-[33%] md:w-full">
-                            <div
-                                className="bg-cover bg-no-repeat flex flex-col h-[761px] items-center justify-start p-14 md:px-10 sm:px-5 w-full"
-                                style={{
-                                    backgroundImage: "url('images/img_placeholder_11.png')",
-                                }}
-                            >
-                                <Text
-                                    className="mb-[541px] text-4xl sm:text-[32px] md:text-[34px] text-center text-gray-800"
-                                    size="txtPoppinsRegular36"
-                                >
-                                    <span className="text-gray-800 font-poppins font-normal">
-                                        <>
-                                            Discover Our <br />
-                                        </>
-                                    </span>
-                                    <span className="text-gray-800 font-poppins font-bold">Featured Product</span>
-                                </Text>
-                            </div>
-                        </div>
+                    <div className="flex flex-col  gap-8 items-center justify-between w-full">
+                       
                         <div className="flex md:flex-1 flex-col items-center justify-start w-[66%] md:w-full">
-                            <div className="md:gap-5 gap-8 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center min-h-[auto] w-full">
+                            <div className="md:gap-5 gap-8 grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 justify-center min-h-[auto] w-full">
                                 <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
                                     <Img
                                         className="h-[245px] md:h-auto object-cover w-[245px]"
@@ -431,7 +353,7 @@ const HomepageVTwoPage: React.FC = () => {
                 </div>
                 {/* limited offer */}
                 <LimitedOffer/>
-                <div className="flex flex-col lg:flex-row gap-[30px] items-center justify-start max-w-[90%] mt-[100px] mx-auto pt-[7px] md:px-5 w-full">
+                <div className="flex flex-col  items-center justify-start max-w-[90%] mt-[100px] mx-auto pt-[7px] md:px-5 w-full">
                     <NewArrival/>
                     <PopularThisWeek/>
                 </div>

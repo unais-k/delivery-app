@@ -10,7 +10,7 @@ const stripeClient = new stripe(stripeSecretKey);
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     await connectDB();
   if (req.method === 'POST') {
-    const {cartItem,formData } = req.body;
+    const {cartItem,formData, totalAmount } = req.body;
     const{email}=formData
 
 
@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           product_data: {
             name: item.product.title, // Assuming each product in your cart has a 'name' property
           },
-          unit_amount:10 * 100, // Stripe expects the amount in cents
+          unit_amount: item.product.price, // Stripe expects the amount in cents
         },
         quantity: item.unit,
       }));

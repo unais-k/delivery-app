@@ -40,7 +40,8 @@ const Checkout: React.FC = () => {
     e.preventDefault();
     await axios.post("/api/order",{
         formData,
-        cartItem
+        cartItem,
+        totalAmount
     }).then((res)=>{
         if(res.data.url){
             window.location=res.data.url
