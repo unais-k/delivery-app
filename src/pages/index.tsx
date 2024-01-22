@@ -359,7 +359,7 @@ const HomepageVTwoPage: React.FC = () => {
                 </div>
                 {/* Testimonial */}
                 <Testimonial />
-                <Footer className="bg-gray-800 flex items-center justify-center md:px-5 w-full" />
+               
             </div>
         </>
     );

@@ -39,12 +39,12 @@ const demiProductData: popularProductType[] = [
 
 const PopularThisWeek = () => {
     return (
-        <div className="flex md:flex-1 flex-col gap-8 items-start justify-start lg:w-1/2 w-full">
+        <div className="flex md:flex-1 flex-col gap-8 items-start justify-start w-full">
             <Text className="text-4xl sm:text-[32px] md:text-[34px] text-gray-800" size="txtPoppinsBold36">
                 Popular This Week
             </Text>
             <div className="flex flex-col items-center justify-start w-full">
-                <div className="md:gap-5 gap-[34px] grid md:grid-cols-2 grid-cols-1 justify-center min-h-[auto] w-full">
+                <div className="md:gap-5 gap-[34px] grid md:grid-cols-3  grid-cols-1 justify-center min-h-[auto] w-full">
                     {
                         demiProductData?.map((item) => {
                             return (
