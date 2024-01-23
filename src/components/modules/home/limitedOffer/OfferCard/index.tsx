@@ -6,7 +6,7 @@ import React from "react";
 
 const OfferCard:React.FC<limitedOfferProductType> = ({id,price,productName,offerPrice,img}) => {
     return (
-        <div className="bg-gray-50 flex flex-col md:flex-row gap-5 items-center justify-start sm:ml-[0] p-8 sm:px-5 shadow-bs1 w-full">
+        <div className="bg-gray-50 flex sm:flex-col md:flex-row gap-5 items-center justify-start sm:ml-[0] p-8 sm:px-5 shadow-bs1 w-full">
             <div className="flex md:flex-1 flex-col gap-8 items-center justify-start w-[38%] md:w-full">
                 <Img
                     className="h-[279px] md:h-auto object-cover w-[279px]"
@@ -23,7 +23,7 @@ const OfferCard:React.FC<limitedOfferProductType> = ({id,price,productName,offer
                     Add to Cart
                 </Button>
             </div>
-            <div className="flex md:flex-1 flex-col items-center justify-start w-[53%] md:w-full">
+            <div className="flex md:flex-1 flex-col items-center justify-start">
                 <div className="flex flex-col items-start justify-start w-full">
                     <Text className="text-2xl md:text-[22px] text-gray-800 sm:text-xl" size="txtPoppinsRegular24">
                         Limited Deals

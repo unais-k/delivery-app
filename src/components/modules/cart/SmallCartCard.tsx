@@ -6,8 +6,17 @@ import { useDispatch } from "react-redux";
 import { decrementQuantity, incrementQuantity, removeItem } from "@/lib/slices/cartSlice";
 import { ProductType } from "@/types/popularProductType";
 import { Input } from "@/components/modules/ui/Input";
+type Props={
+   product: ProductType
+   unit:Number 
+}
 
-const SmallCartCard: React.FC<ProductType> = ({ _id, images, price, title, quantity }) => {
+const SmallCartCard: React.FC<Props> = ({product}) => {
+
+
+    const { images, price,quantity } = product;
+
+
     const dispatch = useDispatch();
 
     return (

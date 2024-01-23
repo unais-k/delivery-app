@@ -5,6 +5,7 @@ import { Input } from "@/components/modules/ui/Input";
 import { Line } from "@/components/modules/ui/Line";
 import { List } from "@/components/modules/ui/List";
 import { Text } from "@/components/modules/ui/Text";
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -89,9 +90,13 @@ const Cart: React.FC = () => {
                                 <Button className="border border-gray-800 border-solid cursor-pointer font-medium h-12 leading-[normal] min-w-[207px] py-[13px] text-center text-gray-800 text-lg">
                                     Continue Shopping
                                 </Button>
+                                <Link href={"/cart/checkout"} >
                                 <Button className="bg-gray-800 cursor-pointer font-medium h-12 leading-[normal] py-[15px] text-center text-lg text-white-A700 w-[171px]">
                                     Checkout
                                 </Button>
+                                
+                                </Link>
+                              
                             </div>
                             
                         </div>
