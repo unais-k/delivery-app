@@ -12,27 +12,12 @@ import { Line } from "@/components/modules/ui/Line";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoHeart } from "react-icons/go";
-import Link from "next/link";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
 const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
     const user = useSelector(selectUser);
     const router = useRouter();
-    const handleLogin = () => {
-        if (user?._id) {
-            router.push("/cart");
-        } else {
-            router.push("/auth");
-        }
-    };
-    const handleWishlist = () => {
-        if (user?._id) {
-            router.push("/wishlist");
-        } else {
-            router.push("/auth");
-        }
-    }
 
     return (
         <>
@@ -62,8 +47,8 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                         </div>
                         {/* cart and login */}
                         <div className="flex flex-row gap-x-3 items-center justify-between">
-                            <MdOutlineShoppingCart onClick={handleLogin} size={25} color={"black"} />
-                            <GoHeart size={25} onClick={handleWishlist} color={"black"} />
+                            <MdOutlineShoppingCart size={25} color={"black"} />
+                            <GoHeart size={25} color={"black"} />
                             <Text
                                 size="txtPoppinsBold24"
                                 className="cursor-pointer font-bold leading-[normal] text-center text-sm px-3"
@@ -87,7 +72,7 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                             Features
                         </Text>
                         <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
-                            <Link href={"/productList"}>Collections</Link>
+                            Collections
                         </Text>
                         <Text className="text-gray-800 text-lg w-auto btn" size="txtPoppinsRegular18">
                             Discount
