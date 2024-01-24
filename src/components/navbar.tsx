@@ -12,7 +12,6 @@ import { Line } from "@/components/modules/ui/Line";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoHeart } from "react-icons/go";
-import Link from "next/link";
 
 type LandingPageHeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{}>;
 
@@ -27,26 +26,14 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                     {/* navbar */}
                     <div className="flex justify-between items-center">
                         {/* logo */}
-                        <div
-                            className="flex flex-row gap-2 cursor-pointer"
-                            onClick={() =>
-                                router.push(
-                                    {pathname: "/"},
-                                    undefined,
-                                    { shallow: true }
-                                )
-                            }
-                        >
+                        <div className="flex flex-row gap-2">
                             <Img className="h-6 w-[35%]" src="images/img_volume.svg" alt="volume" />
-                            <Text
-                                className="text-2xl whitespace-nowrap md:text-[22px] text-gray-800 sm:text-xl"
-                                size="txtPoppinsBold24"
-                            >
-                                Element
+                            <Text className="text-2xl md:text-[22px] text-gray-800 sm:text-xl" size="txtPoppinsBold24">
+                                Elliye
                             </Text>
                         </div>
                         {/* search */}
-                        {/* <div className="md:block hidden">
+                        <div className="md:block hidden">
                             <div className="border border-solid justify-between rounded-md border-gray-200 flex flex-row w-72">
                                 <Input
                                     type="text"
@@ -57,20 +44,12 @@ const Navbar: React.FC<LandingPageHeaderProps> = (props) => {
                                     <BiSearch size={25} color={"white"} />
                                 </span>
                             </div>
-                        </div> */}
+                        </div>
                         {/* cart and login */}
                         <div className="flex flex-row gap-x-3 items-center justify-between">
-                            <BiSearch size={25} color={"black"} />
-                            <MdOutlineShoppingCart onClick={() => router.push(
-                                    {pathname: "/cart"},
-                                    undefined,
-                                    { shallow: true }
-                                )} size={25} color={"black"} />
-                            <Link href="/wishlist">
+                            <MdOutlineShoppingCart size={25} color={"black"} />
                             <GoHeart size={25} color={"black"} />
-                            </Link>
                             <Text
-                                onClick={() => router.push("/auth")}
                                 size="txtPoppinsBold24"
                                 className="cursor-pointer font-bold leading-[normal] text-center text-sm px-3"
                             >
