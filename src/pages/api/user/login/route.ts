@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import connectDB from "@/lib/mongooseConnect";
 import User from "@/model/userSchema";
 import configENV from "@/config";
+import { setCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,6 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const token = jwt.sign({ ID }, configENV.JWT_KEY, {
                     expiresIn: 3000000,
                 });
+                setCookie("apiKey", token,{ req, res, maxAge: 60 * 60 * 24 });
+                setCookie("userId", ID,{ req, res, maxAge: 60 * 60 * 24 });
 
                 res.status(200).json({
                     status: true,

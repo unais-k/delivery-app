@@ -12,6 +12,7 @@ import { handleSignUP, handleLogin } from "./utils";
 import { useDispatch } from "react-redux";
 import { selectUser, setUser } from "@/lib/slices/userSlice";
 import { useSelector } from "react-redux";
+import InnerLoader from "@/components/innerLoader";
 
 const Login: React.FC = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -60,8 +61,8 @@ const Login: React.FC = () => {
 
         router.push("/");
       }
-    } catch (error) {
-      alert(error);
+    } catch (error:any) {
+      toast.warn(error);
       router.push("/auth");
       setOtpSend(false);
       setIsRegister(true);
@@ -71,10 +72,12 @@ const Login: React.FC = () => {
   const handleOTP = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (phone.length < 5) {
-      return alert("not enough number");
+      return toast.warn("not enough number");
     }
+    setButtonSubmit(true)
     try {
       const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha", {});
+      setButtonSubmit(false)
 
       const confirmation = await signInWithPhoneNumber(
         auth,
@@ -87,6 +90,7 @@ const Login: React.FC = () => {
           setIsRegister(false);
           setIsLogin(false);
           toast.info(`OTP Send to the ${phone}`);
+          setTitle("OTP Verify")
         })
         .catch((error: any) => {
           console.log(error.message);
@@ -99,7 +103,7 @@ const Login: React.FC = () => {
   const Login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (phone.length < 10) {
-      return alert("not enough number");
+      return toast.warn("not enough number");
     }
 
     try {
@@ -115,24 +119,28 @@ const Login: React.FC = () => {
         dispatch(setUser(response?.result));
         router.push("/");
       } else {
+        setPhone("91")
+        setPassword("")
+        setButtonSubmit(false)
         toast.error(response.message);
       }
     } catch (error) {}
   };
 
   return (
+      <InnerLoader>
     <div className="justify-center items-center bg-opacity-80 flex w-full flex-col h-fit my-5 max-md:max-w-full">
       <div className="items-stretch border bg-white flex w-[480px] max-w-full flex-col px-8 py-10 rounded-xl border-solid border-zinc-300">
         <div className="items-stretch flex justify-between gap-2">
           <div className="text-zinc-900 text-4xl font-extrabold leading-[50px] tracking-tighter grow shrink basis-auto">
             {title}
           </div>
-          <Image
+          {/* <Image
             alt="close"
             loading="lazy"
             src={closeIcon}
             className="aspect-square object-contain object-center w-[30px] overflow-hidden self-center shrink-0 max-w-full my-auto"
-          />
+          /> */}
         </div>
 
         {isRegister ? (
@@ -173,7 +181,8 @@ const Login: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </InnerLoader>
   );
 };
 

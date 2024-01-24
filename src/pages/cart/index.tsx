@@ -1,3 +1,4 @@
+import InnerLoader from "@/components/innerLoader";
 import CartCard from "@/components/modules/cart/CartCard";
 import { Button } from "@/components/modules/ui/Button";
 import { Img } from "@/components/modules/ui/Image";
@@ -5,18 +6,22 @@ import { Input } from "@/components/modules/ui/Input";
 import { Line } from "@/components/modules/ui/Line";
 import { List } from "@/components/modules/ui/List";
 import { Text } from "@/components/modules/ui/Text";
+import { getCookies } from "cookies-next";
 import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const Cart: React.FC = () => {
+    const cook = getCookies()
+    console.log(cook?.userId);
     const cart = useSelector((state: any) => state.cart)
+    console.log(cart)
     const totalAmount = cart?.cartItem?.reduce((acc: any, curr: any) => {
         const itemTotal = curr?.unit*curr?.product?.price;
         return acc + itemTotal;
     }, 0);
     return (
-        <>
+        <InnerLoader>
             <div className="flex flex-col items-start justify-start px-10 w-full">
                 <div className="flex flex-row gap-4 items-start justify-start w-full">
                     <Text className="font-medium text-gray-500 text-lg">Home</Text>
@@ -64,6 +69,7 @@ const Cart: React.FC = () => {
                             <Text className="text-start text-xl font-[500] font-urbanist uppercase">Cart Item</Text>
                             <List className="flex flex-col gap-[31px] items-center w-full" orientation="vertical">
                                 {cart?.cartItem?.map((item: any) => {
+                                    console.log(item)
                                     return <CartCard key={item._id} {...item} />;
                                 })}
                             </List>
@@ -104,7 +110,7 @@ const Cart: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </InnerLoader>
     );
 };
 

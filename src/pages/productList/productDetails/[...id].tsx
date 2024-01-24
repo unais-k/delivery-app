@@ -1,44 +1,45 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { GetStaticProps, GetStaticPaths } from "next";
 import { Text } from "@/components/modules/ui/Text";
 import { Img } from "@/components/modules/ui/Image";
 import { List } from "@/components/modules/ui/List";
 import { Button } from "@/components/modules/ui/Button";
-import Checkbox from "rc-checkbox";
 import Footer from "@/components/Footer";
 import { Line } from "@/components/modules/ui/Line";
 import connectDB from "@/lib/mongooseConnect";
 import { Product } from "@/model/productSchema";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { FaPlus } from "react-icons/fa6";
 import { ProductType } from "../../../types/popularProductType";
 import { FiMinus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/lib/slices/cartSlice";
-import {addToWishlist} from '@/lib/slices/wishListSlice'
-import { useSelector } from "react-redux";
-import { selectUser } from "@/lib/slices/userSlice";
+import { addToWishlist } from "@/lib/slices/wishListSlice";
+import { getCookies } from "cookies-next";
 import { Dispatch } from "redux";
+import { toast } from "react-toastify";
 
 interface ProductDetailsProps {
     product: ProductType | null;
     similarProducts: ProductType[];
 }
 
-const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }:any) => {
-    const userId = useSelector(selectUser)._id
-    const dispatch:Dispatch<any> = useDispatch();
-    console.log(product,'product');
+const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarProducts }: any) => {
+    const cook = getCookies();
+    const userId = cook?.userId;
+    const dispatch: Dispatch<any> = useDispatch();
+    const router = useRouter();
     const handleAddToCart = () => {
-        product.user = userId;
         dispatch(addToCart(product));
     };
     const handleWishlist = () => {
-        product.user = userId
-        dispatch(addToWishlist(product))
-    }
+        if (userId == "") {
+            toast.warn("please login");
+            router.push("/auth");
+            return;
+        }
+        dispatch(addToWishlist({ product }));
+    };
 
     return (
         <>
@@ -46,11 +47,7 @@ const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarPro
                 <div className="flex flex-col items-center justify-start w-full">
                     <div className="flex  flex-row gap-8 items-center justify-start max-w-[1632px] mx-auto md:px-5 w-full">
                         <div className="flex sm:flex-1 flex-col gap-8 items-center justify-start w-1/2 sm:w-full">
-                            <Img
-                                className="h-auto object-cover w-[200px]"
-                                src={product?.images[0]}
-                                alt="placeholder"
-                            />
+                            <Img className="h-auto object-cover w-[200px]" src={product?.images[0]} alt="placeholder" />
                             <div className="flex sm:flex-row flex-col  gap-8 items-center justify-center w-[61%] flex-nowrap">
                                 {product?.images &&
                                     product?.images.length > 2 &&
@@ -169,7 +166,7 @@ const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarPro
                                 className="md:flex-1 sm:flex-row flex-col gap-8 grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full md:w-full"
                                 orientation="horizontal"
                             >
-                                {similarProducts?.map((item:any) => (
+                                {similarProducts?.map((item: any) => (
                                     <div
                                         key={item._id}
                                         className="flex flex-col gap-4 h-[500px] md:h-auto items-center justify-center sm:ml-[0] p-6 sm:px-5 w-96 sm:w-full"

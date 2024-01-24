@@ -5,12 +5,12 @@ import { List } from "@/components/modules/ui/List";
 import { Button } from "@/components/modules/ui/Button";
 import { RatingBar } from "@/components/modules/ui/RatingBar";
 import Checkbox from "rc-checkbox";
-import Footer from "@/components/Footer";
 import { Line } from "@/components/modules/ui/Line";
 import connectDB from "@/lib/mongooseConnect";
 import { Product } from "@/model/productSchema";
 import Link from "next/link";
 import { ProductType } from "../../types/popularProductType";
+import InnerLoader  from '@/components/innerLoader';
 
 type Products = ProductType[];
 
@@ -18,9 +18,8 @@ interface ProductListProps {
     products: Products;
 }
 const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
-  console.log(products)
     return (
-        <>
+        <InnerLoader>
             <div className="bg-white-A700 flex flex-col font-poppins gap-9 items-center justify-start mx-auto w-full">
                 <div className="flex flex-col items-start justify-start w-full p-5">
                     <div className="flex flex-row gap-4 items-center justify-start ml-36 lg:ml-[0] lg:px-5 w-[11%] lg:w-full">
@@ -292,7 +291,7 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
                    
                 </div>
             </div>
-        </>
+        </InnerLoader>
     );
 };
 
@@ -304,6 +303,7 @@ export async function getServerSideProps() {
         await connectDB();
 
         const products: Products = (await Product.find()) || [];
+        console.log(products,'producst after fetching')
 
         return {
             props: {

@@ -1,24 +1,43 @@
-import React from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Button } from "@/components/modules/ui/Button";
 import { Text } from "@/components/modules/ui/Text";
 import { Img } from "@/components/modules/ui/Image";
 import { Slider } from "@/components/modules/ui/Slider";
 import { PagerIndicator } from "@/components/modules/ui/PageIndiactor";
 import { useRouter } from "next/router";
-import Footer from "@/components/Footer";
 import Testimonial from "@/components/modules/home/Testimonial";
 import NewArrival from "@/components/modules/home/newArrival";
 import PopularThisWeek from "@/components/modules/home/popularThisWeek";
 import LimitedOffer from "@/components/modules/home/limitedOffer";
+import { AnimatePresence } from "framer-motion";
+import Preloader from "@/components/wrapper/Preloader";
+import { Message_data } from "@/context";
+import InnerLoader from "@/components/innerLoader";
+
+
 
 const HomepageVTwoPage: React.FC = () => {
-    const router = useRouter();
 
+    const router = useRouter();
     const sliderRef = React.useRef(null);
-    const [sliderState, setSliderState] = React.useState(0);
+    const [sliderState, setSliderState] = useState(0);
+
+    // const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, setIsLoading } = useContext(Message_data);
+    
+    useEffect(() => {
+            setTimeout(() => {
+                setIsLoading(false);
+                document.body.style.cursor = "default";
+                window.scrollTo(0, 0);
+            }, 2000);
+    }, [setIsLoading]);
+    console.log(isLoading);
+    
 
     return (
-        <>
+        <InnerLoader>
+            <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
             <div className="flex flex-col items-center justify-start w-full">
                 <div className="overflow-auto overflow-x-auto w-full">
                     <div className="h-[950px] md:h-[700px] md:px-5 relative w-full">
@@ -167,7 +186,7 @@ const HomepageVTwoPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="flex flex-col gap-10 items-center justify-start max-w-[1632px] mt-[100px] mx-auto pt-2 md:px-5 w-full">
                     <div className="flex flex-row md:gap-10 items-center justify-between w-full">
                         <Text className="text-4xl sm:text-[32px] md:text-[34px] text-gray-800" size="txtPoppinsBold36">
@@ -181,186 +200,201 @@ const HomepageVTwoPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex flex-col  gap-8 items-center justify-between w-full">
-                       
                         <div className="grid  grid-cols-1 md:grid-cols-3  items-center justify-start w-[66%] md:w-full">
-
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_10.png"
-                                        alt="RectangleThirtyNine"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Green <br />
-                                                Warm Jacket
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_10.png"
+                                    alt="RectangleThirtyNine"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Green <br />
+                                            Warm Jacket
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_11.png"
-                                        alt="RectangleThirtyNine One"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Black
-                                                <br />
-                                                Warm Jacket
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_11.png"
+                                    alt="RectangleThirtyNine One"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Black
+                                            <br />
+                                            Warm Jacket
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_175X225.png"
-                                        alt="RectangleThirtyNine Two"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Blue Grey <br />
-                                                Warm Jacket
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_175X225.png"
+                                    alt="RectangleThirtyNine Two"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Blue Grey <br />
+                                            Warm Jacket
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_13.png"
-                                        alt="RectangleThirtyNine Three"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Blue Denim <br />
-                                                Jacket
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_13.png"
+                                    alt="RectangleThirtyNine Three"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Blue Denim <br />
+                                            Jacket
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_12.png"
-                                        alt="RectangleThirtyNine Four"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Casual <br />
-                                                Pink Shirt
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_12.png"
+                                    alt="RectangleThirtyNine Four"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Casual <br />
+                                            Pink Shirt
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-[23px] items-center justify-start pb-1 w-full">
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_rectangle39.png"
-                                        alt="RectangleThirtyNine Five"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-gray-800 sm:text-xl w-auto"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            Gray T-shirt
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div className="flex flex-1 flex-col gap-[23px] items-center justify-start pb-1 w-full">
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_rectangle39.png"
+                                    alt="RectangleThirtyNine Five"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-gray-800 sm:text-xl w-auto"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        Gray T-shirt
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full" onClick={()=>router.push("/productList")}>
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_9.png"
-                                        alt="RectangleThirtyNine Six"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            <>
-                                                Purple <br />
-                                                Warm Jacket
-                                            </>
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div
+                                className="flex flex-1 flex-col gap-4 items-center justify-start pb-1 w-full"
+                                onClick={() => router.push("/productList")}
+                            >
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_9.png"
+                                    alt="RectangleThirtyNine Six"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-center text-gray-800 sm:text-xl"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        <>
+                                            Purple <br />
+                                            Warm Jacket
+                                        </>
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
-                                <div className="flex flex-1 flex-col gap-[21px] items-center justify-start pb-1 w-full">
-                                    <Img
-                                        className="h-[245px] md:h-auto object-cover w-[245px]"
-                                        src="images/img_placeholder_12.png"
-                                        alt="RectangleThirtyNine Seven"
-                                    />
-                                    <div className="flex flex-col gap-2 items-center justify-start w-auto">
-                                        <Text
-                                            className="text-2xl md:text-[22px] text-gray-800 sm:text-xl w-auto"
-                                            size="txtPoppinsMedium24"
-                                        >
-                                            Red Flannel
-                                        </Text>
-                                        <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
-                                            $299
-                                        </Text>
-                                    </div>
+                            </div>
+                            <div className="flex flex-1 flex-col gap-[21px] items-center justify-start pb-1 w-full">
+                                <Img
+                                    className="h-[245px] md:h-auto object-cover w-[245px]"
+                                    src="images/img_placeholder_12.png"
+                                    alt="RectangleThirtyNine Seven"
+                                />
+                                <div className="flex flex-col gap-2 items-center justify-start w-auto">
+                                    <Text
+                                        className="text-2xl md:text-[22px] text-gray-800 sm:text-xl w-auto"
+                                        size="txtPoppinsMedium24"
+                                    >
+                                        Red Flannel
+                                    </Text>
+                                    <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
+                                        $299
+                                    </Text>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* limited offer */}
-                <LimitedOffer/>
-                <div className="flex flex-col  items-center justify-start max-w-[90%] mt-[100px] mx-auto pt-[7px] md:px-5 w-full">
-                    <NewArrival/>
-                    <PopularThisWeek/>
-                </div>
-                {/* Testimonial */}
-                <Testimonial />
-            
-        </>
+            </div>
+            {/* limited offer */}
+            <LimitedOffer />
+            <div className="flex flex-col  items-center justify-start max-w-[90%] mt-[100px] mx-auto pt-[7px] md:px-5 w-full">
+                <NewArrival />
+                <PopularThisWeek />
+            </div>
+            {/* Testimonial */}
+            <Testimonial />
+        </InnerLoader>
     );
 };
 

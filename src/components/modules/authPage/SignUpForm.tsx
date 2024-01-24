@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { passwordIcon, phoneIcon, userIcon } from "../../../../public";
+import { loaderIcon, passwordIcon, phoneIcon, userIcon } from "../../../../public";
 import React, { useState, FormEvent } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
@@ -89,7 +89,7 @@ const SignUpForm: React.FC<SignUpProps> = ({
                                 alt="password"
                                 loading="lazy"
                                 className="animate-spin"
-                                src="loaderIcon.svg"
+                                src={loaderIcon}
                             />
                             processing
                         </div>

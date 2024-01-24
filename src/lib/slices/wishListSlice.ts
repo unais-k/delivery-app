@@ -1,10 +1,6 @@
 import { ProductType } from "@/types/popularProductType";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { selectUser } from "../slices/userSlice";
-import { useSelector } from "react-redux";
 import axios from "axios";
-import { RootState, persistor } from "../store";
-import { getStoredState } from "redux-persist";
 
 type wishListType = {
     wishListItem: ProductType[];
@@ -16,16 +12,15 @@ const initialState = {
     loading: false,
 } as wishListType;
 
-export const addToWishlist = createAsyncThunk("wishlist/addToWishlist", async (payload: ProductType) => {
-    console.log(payload, "payload");
+
+export const addToWishlist = createAsyncThunk("wishlist/addToWishlist", async ({product}:{product:ProductType}) => {
     try {
         const cart = await axios.post("/api/wishlist", {
             action: "add",
-            product: payload,
+            product: product,
         });
-        console.log(cart);
 
-        return cart?.data?.data?.cart; // Return the payload if successful
+        return cart?.data?.data?.wishlist; // Return the payload if successful
     } catch (error) {
         console.error("Error updating cart in database:", error);
         throw error; // Throw the error if something goes wrong

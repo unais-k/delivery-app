@@ -29,6 +29,8 @@ interface Order {
 }
 
 export interface RegisteredUserInterface {
+    map(arg0: (item: any, i: any) => import("react").JSX.Element): import("react").ReactNode;
+    length(length: any): unknown;
     fullName: string;
     email: string;
     token: string;

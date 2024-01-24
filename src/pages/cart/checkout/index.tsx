@@ -7,6 +7,7 @@ import { Text } from "@/components/modules/ui/Text";
 import Stripe from "@/components/stripe/Stripe";
 import { useSelector } from "react-redux";
 import axios from 'axios';
+import InnerLoader from '@/components/innerLoader';
 
 
 const Checkout: React.FC = () => {
@@ -50,6 +51,7 @@ const Checkout: React.FC = () => {
     // You can dispatch an action or perform any other logic here
   };
   return (
+      <InnerLoader>
     <div className="flex flex-col items-start justify-start px-10 w-full">
       <div className="flex flex-row gap-4 items-start justify-start w-full">
         <Text className="font-medium text-gray-500 text-lg">Home</Text>
@@ -179,7 +181,8 @@ button
           <Stripe />
         </div>
       </div>
-    </div>
+      </div>
+      </InnerLoader>
   );
 };
 

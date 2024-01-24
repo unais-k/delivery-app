@@ -17,6 +17,7 @@ type CartWithUserType = {
 
 const CartCard: React.FC = ({ product, unit }: any) => {
     const userId = useSelector(selectUser)._id;
+    console.log(product,unit,'cart Card')
     const { _id, images, price, title, quantity } = product;
     const cartWithUser: CartWithUserType = {
         _id,
