@@ -17,6 +17,14 @@ const nextConfig = {
             // appId: "1:374515343480:web:234b9ac148d43125008d8d",
         },
     },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: process.env.IMAGE_PATH_NAME,
+          },
+        ],
+      },
 };
 
 module.exports = nextConfig;
