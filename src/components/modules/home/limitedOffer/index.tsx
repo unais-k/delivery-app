@@ -25,7 +25,7 @@ const offerCardData: limitedOfferProductType[] = [
 const LimitedOffer = () => {
     return (
         <div className="h-[1628px] md:h-[535px]  relative w-full">
-            <div className="absolute bg-gray-800 h-full flex flex-col inset-x-[0] items-start justify-start mx-auto md:px-10 sm:px-5 top-[0] w-full">
+            <div className="absolute bg-[#fff] h-full flex flex-col inset-x-[0] items-start justify-start mx-auto md:px-10 sm:px-5 top-[0] w-full">
                 <div className="flex flex-col items-center justify-start  md:ml-[0] ml-[91px]">
                     <Text
                         className="text-4xl sm:text-[32px] md:text-[34px] text-white-A700"

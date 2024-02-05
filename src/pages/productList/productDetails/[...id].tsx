@@ -18,6 +18,11 @@ import { addToWishlist } from "@/lib/slices/wishListSlice";
 import { getCookies } from "cookies-next";
 import { Dispatch } from "redux";
 import { toast } from "react-toastify";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/scrollbar";
 
 interface ProductDetailsProps {
     product: ProductType | null;
@@ -32,6 +37,7 @@ const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarPro
     const handleAddToCart = () => {
         dispatch(addToCart(product));
     };
+    const sizes = ["S", "M", "L", "XL", "XXL"];
     const handleWishlist = () => {
         if (userId == "") {
             toast.warn("please login");
@@ -45,25 +51,44 @@ const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarPro
         <>
             <div className="bg-white-A700 flex flex-col font-poppins gap-8 items-center justify-start mx-auto w-full">
                 <div className="flex flex-col items-center justify-start w-full">
-                    <div className="flex  flex-row gap-8 items-center justify-start max-w-[1632px] mx-auto md:px-5 w-full">
-                        <div className="flex sm:flex-1 flex-col gap-8 items-center justify-start w-1/2 sm:w-full">
-                            <Img className="h-auto object-cover w-[200px]" src={product?.images[0]} alt="placeholder" />
-                            <div className="flex sm:flex-row flex-col  gap-8 items-center justify-center w-[61%] flex-nowrap">
+                    <div className="flex flex-col md:flex-row gap-8 items-start place-items-start justify-start max-w-[1632px] mx-auto md:px-5 w-full">
+                        <div className="md:block hidden w-1/2 place-items-start ">
+                            <div className="grid grid-cols-2 gap-2 content-start  ">
                                 {product?.images &&
                                     product?.images.length > 2 &&
-                                    product?.images
-                                        .slice(1)
-                                        .map((image: string, index: number) => (
+                                    product?.images.map((image: string, index: number) => (
+                                        <Img
+                                            key={index}
+                                            className="h-[337px] md:h-auto object-cover w-fit"
+                                            src={image}
+                                            alt={`Product Image ${index + 1}`}
+                                        />
+                                    ))}
+                            </div>
+                        </div>
+                        <div className="md:hidden block w-screen">
+                            <Swiper
+                                scrollbar={{
+                                    hide: true,
+                                }}
+                                modules={[Scrollbar]}
+                                className="mySwiper"
+                            >
+                                {product?.images &&
+                                    product?.images.length > 2 &&
+                                    product?.images.map((image: string, index: number) => (
+                                        <SwiperSlide key={index}>
                                             <Img
                                                 key={index}
-                                                className="h-[137px] md:h-auto object-cover w-[29%]"
+                                                className="aspect-square object-cover w-screen"
                                                 src={image}
                                                 alt={`Product Image ${index + 1}`}
                                             />
-                                        ))}
-                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                            </Swiper>
                         </div>
-                        <div className="flex md:flex-1 flex-col gap-14 items-start justify-start w-1/2 md:w-full">
+                        <div className="flex md:flex-1 flex-col gap-12 items-start justify-start md:px-0 px-5 w-full">
                             <div className="flex flex-col gap-8 items-start justify-start w-auto md:w-full">
                                 <div className="flex flex-row gap-4 items-start justify-start w-auto">
                                     <Text className="text-gray-500 text-lg w-auto" size="txtPoppinsMedium18Gray500">
@@ -78,26 +103,52 @@ const ProductDetailsPage: React.FC<ProductDetailsProps> = ({ product, similarPro
                                 </div>
                                 <div className="flex flex-col items-start justify-start w-full">
                                     <Text
-                                        className="md:text-5xl sm:text-[42px] text-[56px] text-gray-800"
+                                        className="md:text-5xl sm:text-[42px] text-[36px] text-gray-800"
                                         size="txtPoppinsBold56"
                                     >
                                         <>{product?.title}</>
                                     </Text>
                                     <Text
-                                        className="mt-[41px] text-4xl sm:text-[32px] md:text-[34px] text-gray-500"
+                                        className="mt-[41px]  text-[32px] md:text-[34px] text-gray-500"
                                         size="txtPoppinsRegular36Gray500"
                                     >
-                                        $ {product?.price}
+                                        USD $ {product?.price}
                                     </Text>
                                     <Line className="bg-bluegray-100 h-px mt-10 w-full" />
-                                    <Text
+                                    {/* <Text
                                         className="leading-[32.00px] mt-[31px] text-gray-500 text-lg w-full"
                                         size="txtPoppinsRegular18Gray500"
                                     >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </Text>
+                                        {product?.description}
+                                    </Text> */}
+                                </div>
+                                <div className="flex flex-col gap-y-5">
+                                    <div className="">
+                                        <Text size="txtPlayfairDisplayRegular96">color</Text>
+                                        <div className="flex flex-row">
+                                            <div className="py-2 px-4 border border-gray-900 font-raleway text-center">White</div>
+                                            <div className="py-2 px-4 border border-gray-900 font-raleway text-center">Brown</div>
+                                            <div className="py-2 px-4 border border-gray-900 font-raleway text-center">Yellow</div>
+                                            <div className="py-2 px-4 border border-gray-900 font-raleway text-center">Blue</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <Text size="txtPlayfairDisplayRegular96">size</Text>
+                                            <div className="flex flex-row justify-start items-center">
+                                                {sizes.map((item, id) => {
+                                                    return (
+                                                        <div
+                                                            className="border border-gray-900 py-2 px-4 font-raleway text-center items-center"
+                                                            key={id}
+                                                        >
+                                                            {item}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex flex-row gap-6 items-center justify-start  md:w-full">
@@ -219,8 +270,6 @@ export const getServerSideProps: GetServerSideProps<ProductDetailsProps, { id: s
                 category: product.category,
             }).limit(4);
         }
-
-        console.log(product, "Product not found");
 
         return {
             props: {

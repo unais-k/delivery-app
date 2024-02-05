@@ -18,7 +18,7 @@ interface WishlistProp {
     wishlistData: RegisteredUserInterface;
 }
 const Wishlist: React.FC<WishlistProp> = ({ wishlistData }) => {
-    console.log(wishlistData.length);
+    console.log(wishlistData?.length);
     const data = wishlistData
     const dispatch: Dispatch<any> = useDispatch();
     return (

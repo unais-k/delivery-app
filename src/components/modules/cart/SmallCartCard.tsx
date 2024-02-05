@@ -20,7 +20,7 @@ const SmallCartCard: React.FC<Props> = ({product}) => {
     const dispatch = useDispatch();
 
     return (
-        <div className="flex flex-col gap-8 items-start justify-start">
+        <div className="flex flex-col items-start justify-start">
             <div className="p-3">
                 <div className="flex flex-row justify-start items-center h-[150px] gap-x-5">
                     {/* img div */}
@@ -32,7 +32,7 @@ const SmallCartCard: React.FC<Props> = ({product}) => {
                         />
                     </div>
                     {/* product details */}
-                    <div className="relative h-full w-[200px]">
+                    <div className="relative h-full w-fit px-2">
                         {/* <div className="text-[20px] leading-7 my-2 font-[200] font-raleway">{title} </div> */}
                         <div className="text-[18px] leading-7 my-2 font-[300] font-raleway capitalize">product name</div>
                         <div className="font-urbanist text-base my-2 text-slate-600">Size</div>

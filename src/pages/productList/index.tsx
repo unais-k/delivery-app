@@ -37,11 +37,10 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
                         </Text>
                     </div>
                     {/* filter bar */}
-                    <div className="flex sm:flex-row flex-row gap-8 items-start justify-start max-w-[1400px] mt-[70px] mx-auto sm:px-5 w-full">
-                        <FilterBar />
+                    <div className="flex sm:flex-row flex-row gap-8 items-start justify-start mt-[70px] mx-auto sm:px-5 w-full">
+                        {/* <FilterBar /> */}
 
-                        <div className="flex md:flex-1 flex-col gap-8 items-center justify-start  md:w-full">
-                            <div className="common-pointer flex flex-col gap-14 items-center justify-start w-full">
+                        <div className="flex md:flex-1 flex-col items-center justify-start w-full">
                                 <div className="flex flex-col items-center justify-start w-full">
                                     <div className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 justify-center min-h-[auto] w-full">
                                         {products.map((item: ProductType) => {
@@ -56,7 +55,6 @@ const ProductListPage: React.FC<ProductListProps> = ({ products }) => {
                                             );
                                         })}
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

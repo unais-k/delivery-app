@@ -16,18 +16,18 @@ type FooterProps = React.DetailedHTMLProps<
 const Footer: React.FC<FooterProps> = (props) => {
   return (
     <>
-      <footer className="bg-gray-800 flex items-center justify-center md:px-5 w-full">
-        <div className="flex flex-col md:gap-10 gap-[100px] items-center justify-center mb-8 mt-16 mx-auto w-[85%]">
-          <div className="flex flex-col md:flex-row md:gap-5 items-start justify-evenly w-full">
+      <footer className="bg-[#fff] flex items-center justify-center md:px-5 w-full">
+        <div className="flex flex-col md:gap-10 gap-[100px] items-center justify-center mt-16 mx-auto border-2 border-[#000] w-[90%]">
+          <div className="flex flex-col md:flex-row md:gap-5 items-start justify-evenly py-10 w-full px-5">
             <div className="flex flex-col items-start justify-start pr-1.5 pt-1.5 md:w-[33%] w-full">
               <div className="flex flex-row gap-2 items-start justify-start w-fit">
                 <Img
                   className="h-6 w-[35%]"
-                  src="images/img_group19.svg"
+                  src="/images/img_group19.svg"
                   alt="GroupNineteen"
                 />
                 <Text
-                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  className="text-2xl md:text-[22px] text-slate-300 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
                 >
                   Elliye
@@ -44,11 +44,11 @@ const Footer: React.FC<FooterProps> = (props) => {
                 <div className="flex flex-row gap-2 items-center justify-start pr-1 py-1 w-full">
                   <Img
                     className="h-6 w-6"
-                    src="images/img_call.svg"
+                    src="/images/img_call.svg"
                     alt="call"
                   />
                   <Text
-                    className="text-lg text-white-A700"
+                    className="text-lg text-slate-300"
                     size="txtPoppinsRegular18WhiteA700"
                   >
                     +1234567890
@@ -57,11 +57,11 @@ const Footer: React.FC<FooterProps> = (props) => {
                 <div className="flex flex-row gap-2 items-start justify-start pr-1 py-1 w-full">
                   <Img
                     className="h-6 w-6"
-                    src="images/img_mail.svg"
+                    src="/images/img_mail.svg"
                     alt="mail"
                   />
                   <Text
-                    className="mt-1 text-lg text-white-A700"
+                    className="mt-1 text-lg text-slate-300"
                     size="txtPoppinsRegular18WhiteA700"
                   >
                     elliye@support.com
@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             <div className="flex flex-col md:flex-row md:gap-5 items-start justify-evenly md:mt-0 mt-10 w-full">
               <div className="flex flex-col gap-[45px] items-start justify-start pr-1 py-1 w-[70%] md:w-full">
                 <Text
-                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  className="text-2xl md:text-[22px] text-slate-300 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
                 >
                   Product Links
@@ -106,7 +106,7 @@ const Footer: React.FC<FooterProps> = (props) => {
               </div>
               <div className="flex flex-col gap-[39px] items-start justify-end pr-1 py-1 w-[70%] md:w-full">
                 <Text
-                  className="mt-[3px] text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  className="mt-[3px] text-2xl md:text-[22px] text-slate-300 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
                 >
                   Company
@@ -152,7 +152,7 @@ const Footer: React.FC<FooterProps> = (props) => {
               </div>
               <div className="flex flex-col items-start justify-start md:mt-0 mt-1 w-[70%] md:w-full">
                 <Text
-                  className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
+                  className="text-2xl md:text-[22px] text-slate-300 sm:text-xl"
                   size="txtPoppinsBold24WhiteA700"
                 >
                   Join our Newsletter
@@ -164,18 +164,18 @@ const Footer: React.FC<FooterProps> = (props) => {
                   Drop your email below to get update, promotions, coupons, and
                   more!
                 </Text>
-                <div className="bg-gray-800 border border-solid border-white-A700 flex flex-row items-center justify-between mt-[35px] sm:pl-5 pl-6 w-full">
+                <div className=" border-2 border-solid  flex flex-row items-center justify-between mt-[35px] sm:pl-5 pl-6 w-full">
                   <Input
                     type="text"
-                    className="text-bluegray-100_87 text-lg font-normal font-poppins tracking-[0.36px]"
+                    className="bg-transparent p-3 text-lg font-normal font-poppins tracking-[0.36px]"
                     placeholder="Enter your email"
                   />
                  
                  
-                  <div className="bg-white-A700 md:h-[31px] h-[60px] p-3.5 relative w-[60px]">
+                  <div className=" md:h-[31px] h-[60px] p-3.5 relative w-[60px]">
                     <Img
                       className="absolute h-[31px] inset-[0] justify-center m-auto w-8"
-                      src="images/img_menu.svg"
+                      src="/images/img_menu.svg"
                       alt="menu"
                     />
                   </div>
